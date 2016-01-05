@@ -4,6 +4,8 @@ import com.intelligrape.model.Topic;
 import com.intelligrape.model.User;
 import com.intelligrape.service.TopicServiceImpl;
 import com.intelligrape.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -21,7 +23,7 @@ public class AppInitializer implements WebApplicationInitializer {
     @Autowired
     private TopicServiceImpl topicService;
 
-
+    private  static final Logger log = LoggerFactory.getLogger(AppInitializer.class);
     public void onStartup(ServletContext container) throws ServletException {
 
         System.out.println("on Start up");
@@ -34,12 +36,14 @@ public class AppInitializer implements WebApplicationInitializer {
 
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/");
+        bootStrapData();
 
     }
 
     public void bootStrapData(){
-        createUserAndTopic("Madhav", "Khanna", "madhav.khanna@tothenew.com", "1234", "First Topic");
-        createUserAndTopic("Maddy","Khanna","madhav.khanna@intelligrape.com","1234","Second Topic");
+        log.info("###########################################");
+//        createUserAndTopic("Madhav", "Khanna", "madhav.khanna@tothenew.com", "1234", "First Topic");
+//        createUserAndTopic("Maddy","Khanna","madhav.khanna@intelligrape.com","1234","Second Topic");
     }
     public void createUserAndTopic(String firstName,String lastName,String userName,String password,String title){
         User user = new User(firstName,lastName,userName,password);

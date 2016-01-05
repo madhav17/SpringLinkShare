@@ -44,7 +44,6 @@ public class UserController {
 
     @RequestMapping(value = "/dashboard")
     public String dashboard(HttpServletRequest request, Model model) {
-        System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh");
         User currentUser = (User) request.getSession().getAttribute("currentUser");
         List<Topic> topicList = userService.findAllUserTopics(currentUser);
         model.addAttribute("topics", topicList);

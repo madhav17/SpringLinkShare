@@ -25,13 +25,11 @@ public class LoginController {
     @RequestMapping(value = "/")
     public String signIn()
     {
-        System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh logger");
         return "login/signIn";
     }
 
     @RequestMapping(value = "login/home")
     public String home(@RequestParam("userName") String userName, @RequestParam("password") String password, HttpServletRequest request) {
-        System.out.println("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHh");
         String url = "redirect:/user/dashboard";
         User currentUser = (User) request.getSession().getAttribute("currentUser");
         if (currentUser == null) {
