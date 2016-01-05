@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SpringLinkShare:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="SpringLinkShare.war">
+      <element id="artifact" artifact-name="SpringLinkShare:war exploded" />
+    </root>
+  </artifact>
+</component>
