@@ -6,40 +6,41 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "user",uniqueConstraints = {
-        @UniqueConstraint(columnNames = "user_name")
+@Table(name = "user", uniqueConstraints = {
+        @UniqueConstraint(columnNames = "username")
 })
-public class User implements Serializable{
+public class User implements Serializable {
 
-    public User(String firstName,String lastName,String userName,String password){
+    public User(String firstName, String lastName, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
     }
 
-    public User(){
+    public User() {
 
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
 
     @NotEmpty
-    @Column(name = "first_name",nullable = false)
+    @Column(name = "first_name", nullable = false)
     public String firstName;
 
     @NotEmpty
-    @Column(name = "last_name",nullable = false)
+    @Column(name = "last_name", nullable = false)
     public String lastName;
 
     @NotEmpty
-    @Column(name = "user_name",nullable = false,unique = true)
-    public String userName;
+    @Column(name = "username", nullable = false, unique = true)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public String username;
 
     @NotEmpty
-    @Column(name = "password",nullable = false)
+    @Column(name = "password", nullable = false)
     public String password;
 
 //    @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -49,24 +50,24 @@ public class User implements Serializable{
 //    public LocalDate dateOfBirth;
 
 
-    public String getFirstName(){
+    public String getFirstName() {
         return firstName;
     }
 
-    public String getLastName(){
+    public String getLastName() {
         return lastName;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return password;
     }
 
-    public String getUserName(){
-        return userName;
+    public String getUserName() {
+        return username;
     }
 
 
@@ -79,7 +80,7 @@ public class User implements Serializable{
 create table user(id INT NOT NULL auto_increment,
 first_name VARCHAR(100) NOT NULL,
 last_name VARCHAR(100) NOT NULL,
-user_name VARCHAR(100) NOT NULL,
+username VARCHAR(100) NOT NULL,
 password VARCHAR(100) NOT NULL,
 // date_of_birth DATE NOT NULL,
 PRIMARY KEY (id));

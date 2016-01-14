@@ -3,6 +3,7 @@ package com.intelligrape.service;
 
 import com.intelligrape.model.Topic;
 import com.intelligrape.model.User;
+import com.intelligrape.util.enums.Role;
 
 import java.util.List;
 
@@ -11,6 +12,8 @@ public interface UserService {
     User findById(int id);
 
     void saveUser(User employee);
+
+    void saveUserAndRole(User employee,Role role);
 
     void updateUser(User employee, String firstName, String lastName, String password);
 

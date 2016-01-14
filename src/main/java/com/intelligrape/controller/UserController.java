@@ -31,11 +31,11 @@ public class UserController {
 
 
     @RequestMapping(value = "/register")
-    public String register(HttpServletRequest request, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("userName") String userName, @RequestParam("password") String password) {
+    public String register(HttpServletRequest request, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("username") String username, @RequestParam("password") String password) {
         User currentUser = new User();
         currentUser.firstName = firstName;
         currentUser.lastName = lastName;
-        currentUser.userName = userName;
+        currentUser.username = username;
         currentUser.password = password;
         userService.saveUser(currentUser);
         request.getSession().setAttribute("currentUser", currentUser);

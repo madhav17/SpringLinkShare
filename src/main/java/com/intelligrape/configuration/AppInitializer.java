@@ -31,7 +31,7 @@ public class AppInitializer implements WebApplicationInitializer, InitializingBe
     }
 
     public void afterPropertiesSet() {
-//        utilService.bootStrapData();
+        utilService.bootStrapData();
     }
 
 }

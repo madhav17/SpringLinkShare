@@ -18,7 +18,7 @@
     <br/>
     <br/>
     <label for="userName">User Name : </label>
-    <input type="email" name="userName" id="userName" required="true"/>
+    <input type="email" name="username" id="username" required="true"/>
 
     <br/>
     <br/>

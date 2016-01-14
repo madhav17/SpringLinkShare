@@ -3,6 +3,7 @@ package com.intelligrape.service;
 import com.intelligrape.dao.UserDao;
 import com.intelligrape.model.Topic;
 import com.intelligrape.model.User;
+import com.intelligrape.util.enums.Role;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -56,6 +57,11 @@ public class UserServiceImpl implements UserService {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Topic.class);
         criteria.add(Restrictions.eq("user", user));
         return criteria.list();
+    }
+
+    @Transactional
+    public void saveUserAndRole(User employee,Role role){
+        userDao.saveEmployeeAndRole(employee,role);
     }
 
 }
