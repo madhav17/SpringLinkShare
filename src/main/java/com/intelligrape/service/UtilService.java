@@ -38,9 +38,9 @@ public class UtilService {
 
     @PostConstruct
     public void bootStrapData(){
-        System.out.print("sdfdsfsdfdsfdsfdsfdsfdsfdsfdsf");
-        createUserAndTopic("Madhav", "Khanna", "madhav.khanna@tothenew.com", "1234", "First Topic");
-        createUserAndTopic("Maddy","Khanna","madhav.khanna@intelligrape.com","1234","Second Topic");
+        log.error("sdfdsfsdfdsfdsfdsfdsfdsfdsfdsf");
+//        createUserAndTopic("Madhav", "Khanna", "madhav.khanna@tothenew.com", "1234", "First Topic");
+//        createUserAndTopic("Maddy","Khanna","madhav.khanna@intelligrape.com","1234","Second Topic");
     }
     public void createUserAndTopic(String firstName,String lastName,String username,String password,String title){
         User user = new User(firstName,lastName,username,password);
