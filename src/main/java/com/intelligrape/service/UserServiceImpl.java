@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     public UserDao userDao;
 
     @Autowired
-    private SessionFactory sessionFactory;
+    public SessionFactory sessionFactory;
 
     public static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 

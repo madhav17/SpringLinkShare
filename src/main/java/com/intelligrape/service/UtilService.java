@@ -11,9 +11,9 @@ import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
-import javax.transaction.Transactional;
 
 @Service("utilService")
 @Transactional
@@ -42,8 +42,7 @@ public class UtilService {
     }
     public void createUserAndTopic(String firstName,String lastName,String username,String password,String title){
         User user = new User(firstName,lastName,username,password);
-        System.out.println(user.getUsername());
-        userService.saveUser(user);
+        userService.saveUserAndRole(user,Role.ROLE_USER.name());
         topicService.saveTopic(new Topic(user,title));
     }
 

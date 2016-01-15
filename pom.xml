@@ -40,8 +40,9 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>4.3.8.Final</version>
+            <version>4.0.1.Final</version>
         </dependency>
+
 
         <!-- Then, to enable Hibernate to use its proxy model, we need javassist as well: -->
         <dependency>

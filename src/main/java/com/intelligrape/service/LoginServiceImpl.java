@@ -17,7 +17,7 @@ public class LoginServiceImpl implements LoginService {
 
 
     @Autowired
-    private SessionFactory sessionFactory;
+    public SessionFactory sessionFactory;
 
     @Transactional
     public List<User> getUser(String username, String password) {

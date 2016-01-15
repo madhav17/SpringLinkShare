@@ -43,6 +43,8 @@ public class HibernateConfiguration {
 Create a session factory bean configuration file (Hibernate.xml), put it into the “resources/database” folder.
 In annotation you have to use the AnnotationSessionFactoryBean, instead of LocalSessionFactoryBean,
 and specify your annotated model classes in ‘annotatedClasses‘ property instead of ‘mappingResources‘ property.
+
+used in hibernate 3 replacement is LocalSessionFactoryBean
     *
     * */
 //    @Bean
@@ -66,9 +68,13 @@ and specify your annotated model classes in ‘annotatedClasses‘ property inst
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();
+        // environment picks value from application.properties
         properties.put("hibernate.dialect", environment.getRequiredProperty("hibernate.dialect"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("hibernate.format_sql"));
+//        properties.put("hbm2ddl.auto","update");
+        properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.globally_quoted_identifiers", "true");
         return properties;
     }
 

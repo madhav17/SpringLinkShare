@@ -10,8 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository("userDao")
@@ -22,7 +22,7 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
     public ApplicationContext applicationContext;
 
     @Autowired
-    private SessionFactory sessionFactory;
+    public SessionFactory sessionFactory;
 
     public UtilService getUtilService() {
         return (UtilService) applicationContext.getBean("utilService");
