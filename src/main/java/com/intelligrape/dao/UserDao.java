@@ -11,7 +11,7 @@ public interface UserDao {
 
     void saveEmployee(User employee);
 
-    void saveEmployeeAndRole(User employee,Role role);
+    void saveEmployeeAndRole(User employee,String role);
 
     List<User> findAllUser();
 }

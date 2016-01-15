@@ -1,6 +1,8 @@
 package com.intelligrape.configuration;
 
 import com.intelligrape.service.UtilService;
+import com.intelligrape.util.Util;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.WebApplicationInitializer;
@@ -16,9 +18,10 @@ public class AppInitializer implements WebApplicationInitializer, InitializingBe
     @Autowired
     public UtilService utilService;
 
+    Logger log = Util.getLogger(AppInitializer.class);
     public void onStartup(ServletContext container) throws ServletException {
 
-        System.out.println("on Start up");
+        log.error("on Start up");
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
         ctx.register(AppConfig.class);
         ctx.setServletContext(container);
@@ -31,7 +34,7 @@ public class AppInitializer implements WebApplicationInitializer, InitializingBe
     }
 
     public void afterPropertiesSet() {
-        utilService.bootStrapData();
+//        utilService.bootStrapData();
     }
 
 }

@@ -17,7 +17,7 @@ public class TopicDaoImpl extends AbstractDao<Integer, Topic> implements TopicDa
     }
 
     public void saveTopic(Topic topic) {
-        persist(topic);
+        save(topic);
     }
 
     public List<Topic> findAllTopic() {

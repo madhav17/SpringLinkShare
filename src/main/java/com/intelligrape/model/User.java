@@ -22,7 +22,8 @@ public class User implements Serializable {
 
     }
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
 
     @NotEmpty
@@ -35,8 +36,6 @@ public class User implements Serializable {
 
     @NotEmpty
     @Column(name = "username", nullable = false, unique = true)
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public String username;
 
     @NotEmpty
@@ -66,7 +65,7 @@ public class User implements Serializable {
         return password;
     }
 
-    public String getUserName() {
+    public String getUsername() {
         return username;
     }
 

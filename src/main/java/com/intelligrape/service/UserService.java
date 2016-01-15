@@ -13,7 +13,7 @@ public interface UserService {
 
     void saveUser(User employee);
 
-    void saveUserAndRole(User employee,Role role);
+    void saveUserAndRole(User employee,String role);
 
     void updateUser(User employee, String firstName, String lastName, String password);
 

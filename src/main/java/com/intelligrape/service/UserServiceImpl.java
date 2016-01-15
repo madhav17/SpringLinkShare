@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void saveUserAndRole(User employee,Role role){
+    public void saveUserAndRole(User employee,String role){
         userDao.saveEmployeeAndRole(employee,role);
     }
 

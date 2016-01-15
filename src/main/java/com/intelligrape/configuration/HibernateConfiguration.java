@@ -8,7 +8,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
+import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -34,6 +36,24 @@ public class HibernateConfiguration {
         return sessionFactory;
     }
 
+
+    /*
+    * Hibernate related….
+
+Create a session factory bean configuration file (Hibernate.xml), put it into the “resources/database” folder.
+In annotation you have to use the AnnotationSessionFactoryBean, instead of LocalSessionFactoryBean,
+and specify your annotated model classes in ‘annotatedClasses‘ property instead of ‘mappingResources‘ property.
+    *
+    * */
+//    @Bean
+//    public AnnotationSessionFactoryBean sessionFactory() {
+//        AnnotationSessionFactoryBean sessionFactory = new AnnotationSessionFactoryBean();
+//        sessionFactory.setDataSource(dataSource());
+//        sessionFactory.setPackagesToScan(new String[] { "com.intelligrape.model" });
+//        sessionFactory.setHibernateProperties(hibernateProperties());
+//        return sessionFactory;
+//    }
+
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -58,5 +78,10 @@ public class HibernateConfiguration {
         HibernateTransactionManager txManager = new HibernateTransactionManager();
         txManager.setSessionFactory(s);
         return txManager;
+    }
+
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+        return new PersistenceExceptionTranslationPostProcessor();
     }
 }

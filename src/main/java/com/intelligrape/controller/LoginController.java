@@ -29,11 +29,11 @@ public class LoginController {
     }
 
     @RequestMapping(value = "login/home")
-    public String home(@RequestParam("userName") String userName, @RequestParam("password") String password, HttpServletRequest request) {
+    public String home(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) {
         String url = "redirect:/user/dashboard";
         User currentUser = (User) request.getSession().getAttribute("currentUser");
         if (currentUser == null) {
-            List<User> userList = loginService.getUser(userName, password);
+            List<User> userList = loginService.getUser(username, password);
             if (userList.size()>0) {
                 currentUser = userList.get(0);
                 request.getSession().setAttribute("currentUser", currentUser);

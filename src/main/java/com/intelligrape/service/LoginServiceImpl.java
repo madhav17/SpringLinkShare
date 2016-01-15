@@ -20,9 +20,9 @@ public class LoginServiceImpl implements LoginService {
     private SessionFactory sessionFactory;
 
     @Transactional
-    public List<User> getUser(String userName, String password) {
+    public List<User> getUser(String username, String password) {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
-        criteria.add(Restrictions.eq("userName", userName));
+        criteria.add(Restrictions.eq("username", username));
         criteria.add(Restrictions.eq("password", password));
         return criteria.list();
     }

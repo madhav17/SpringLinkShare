@@ -10,31 +10,39 @@ import javax.persistence.*;
 @Table(name = "user_role")
 public class UserRole {
 
-    public UserRole(User user,Role role){
+    public UserRole(User user, String role) {
         this.user = user;
         this.role = role;
     }
-    public UserRole(){
+
+    public UserRole() {
 
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",nullable = false)
+    @Column(name = "id", nullable = false)
     public int id;
 
     @OneToOne
-    @JoinColumn(name="user_id",nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     public User user;
 
     @NotEmpty
-    @Column(name = "role",nullable = false)
-    public Role role;
+    @Column(name = "role", nullable = false)
+    public String role;
+
+    @Transient
+    public Role getRoleObject(String roleValue) {
+        return Role.valueOf(roleValue);
+    }
+
+    public void setRole(Role role) {
+        this.role = role.name();
+    }
 
 
 }
-
-
 
 
 // For User Role

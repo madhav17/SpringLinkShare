@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface LoginService {
 
-    public List<User> getUser(String userName, String password);
+    public List<User> getUser(String username, String password);
 }
