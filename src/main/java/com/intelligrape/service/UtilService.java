@@ -35,7 +35,7 @@ public class UtilService {
     private  static final Logger log = Util.getLogger(UtilService.class);
 
     public void bootStrapData(){
-        System.out.print("sdfdsfsdfdsfdsfdsfdsfdsfdsfdsf");
+        log.error("Bootstarp is called");
         createUserAndTopic("Madhav", "Khanna", "madhav.khanna@tothenew.com", "1234", "First Topic");
         createUserAndTopic("Maddy","Khanna","madhav.khanna@intelligrape.com","1234","Second Topic");
     }
