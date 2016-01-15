@@ -5,7 +5,6 @@ import com.intelligrape.model.UserRole;
 import com.intelligrape.service.UtilService;
 import com.intelligrape.util.enums.Role;
 import org.hibernate.Criteria;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
@@ -21,8 +20,6 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
     @Autowired
     public ApplicationContext applicationContext;
 
-    @Autowired
-    public SessionFactory sessionFactory;
 
     public UtilService getUtilService() {
         return (UtilService) applicationContext.getBean("utilService");
@@ -33,13 +30,13 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
     }
 
     public void saveEmployee(User user) {
-        sessionFactory.getCurrentSession().save(user);
+        getSession().save(user);
     }
 
     @Transactional
     public void saveEmployeeAndRole(User employee, String role) {
         saveEmployee(employee);
-        sessionFactory.getCurrentSession().save(new UserRole(employee, role));
+        getSession().save(new UserRole(employee, role));
     }
 
     public List<User> findAllUser() {

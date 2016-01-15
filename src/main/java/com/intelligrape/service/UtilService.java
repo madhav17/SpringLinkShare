@@ -34,7 +34,6 @@ public class UtilService {
 
     private  static final Logger log = Util.getLogger(UtilService.class);
 
-    @PostConstruct
     public void bootStrapData(){
         System.out.print("sdfdsfsdfdsfdsfdsfdsfdsfdsfdsf");
         createUserAndTopic("Madhav", "Khanna", "madhav.khanna@tothenew.com", "1234", "First Topic");
