@@ -36,11 +36,11 @@ public class UtilService {
 
     public void bootStrapData(){
         log.error("Bootstarp is called");
-        createUserAndTopic("Madhav", "Khanna", "madhav.khanna@tothenew.com", "1234", "First Topic");
-        createUserAndTopic("Maddy","Khanna","madhav.khanna@intelligrape.com","1234","Second Topic");
+        createUserAndTopic("Madhav", "Khanna", "madhav.khanna@tothenew.com", "1234", "First Topic",true);
+        createUserAndTopic("Maddy","Khanna","madhav.khanna@intelligrape.com","1234","Second Topic",true);
     }
-    public void createUserAndTopic(String firstName,String lastName,String username,String password,String title){
-        User user = new User(firstName,lastName,username,password);
+    public void createUserAndTopic(String firstName,String lastName,String username,String password,String title,Boolean enabled){
+        User user = new User(firstName,lastName,username,password,enabled);
         userService.saveUserAndRole(user,Role.ROLE_USER.name());
         topicService.saveTopic(new Topic(user,title));
     }

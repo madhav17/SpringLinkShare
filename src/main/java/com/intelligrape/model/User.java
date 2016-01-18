@@ -3,6 +3,7 @@ package com.intelligrape.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -11,12 +12,12 @@ import java.io.Serializable;
 })
 public class User implements Serializable {
 
-    public User(String firstName, String lastName, String username, String password) {
+    public User(String firstName, String lastName, String username, String password,Boolean enabled) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
-        this.enabled = true;
+        this.enabled = enabled;
     }
 
     public User() {
@@ -43,9 +44,11 @@ public class User implements Serializable {
     @Column(name = "password", nullable = false)
     public String password;
 
-    @NotEmpty
+    @NotNull
+    //@NotEmpty
+    // can not use @NotEmpty This is completely wrong. An integer cannot be considered as a string, collection, map or array. Use the standard @NotNull instead.
     @Column(name = "enabled", nullable = false)
-    public boolean enabled;
+    public Boolean enabled;
 
 //    @DateTimeFormat(pattern = "dd/MM/yyyy")
 //    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
@@ -74,7 +77,7 @@ public class User implements Serializable {
         return username;
     }
 
-    public boolean getEnabled() {
+    public Boolean getEnabled() {
         return enabled;
     }
 
