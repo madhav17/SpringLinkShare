@@ -21,7 +21,7 @@
 
 <%--<form:form method="post" action="/login/home">--%>
     <%--<form name="login" action="<c:url value='/j_spring_security_check' />" method='POST'>--%>
-    <form name="login" action="<c:url value='/login/signIn' />" method='POST'>
+    <form name="login" action="/login/signIn" method='POST'>
         <label for="userName">User Name : </label>
         <input type="text" name="username" id="username" required="true"/>
         <br/>
