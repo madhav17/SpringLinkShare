@@ -16,6 +16,7 @@ public class User implements Serializable {
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+        this.enabled = true;
     }
 
     public User() {
@@ -42,6 +43,10 @@ public class User implements Serializable {
     @Column(name = "password", nullable = false)
     public String password;
 
+    @NotEmpty
+    @Column(name = "enabled", nullable = false)
+    public boolean enabled;
+
 //    @DateTimeFormat(pattern = "dd/MM/yyyy")
 //    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
 //    @Column(name = "date_of_birth",nullable = false)
@@ -67,6 +72,10 @@ public class User implements Serializable {
 
     public String getUsername() {
         return username;
+    }
+
+    public boolean getEnabled() {
+        return enabled;
     }
 
 

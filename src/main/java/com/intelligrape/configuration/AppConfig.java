@@ -7,6 +7,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.web.servlet.ViewResolver;
@@ -16,7 +17,9 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
+// above two annotation is important for spring 4 for reading,class name is not important
 @ComponentScan(basePackages = "com.intelligrape")
+@Import({SecurityConfig.class})
 public class AppConfig implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired

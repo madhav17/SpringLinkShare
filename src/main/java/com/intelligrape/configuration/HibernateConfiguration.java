@@ -20,6 +20,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
+// above two annotation is important for spring 4 for reading,class name is not important
 @ComponentScan({ "com.intelligrape.configuration" })
 @PropertySource(value = { "classpath:application.properties" })
 public class HibernateConfiguration {
