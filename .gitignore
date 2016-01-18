@@ -3,6 +3,7 @@
 *.iws
 *.sql
 target/
+target
 .idea
 logs/
 out/
