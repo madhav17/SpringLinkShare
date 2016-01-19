@@ -101,6 +101,19 @@
             <version>1.2</version>
         </dependency>
 
+        <!-- Thymeleaf Spring4 and slf4j is exlcuded from Thymeleaf-->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>2.0.21</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jcl-over-slf4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
 
         <!-- Spring Data JPA -->
         <dependency>
