@@ -10,19 +10,28 @@
 
 
     <%--global css goes here...--%>
-    <spring:url value="resources/js/jquery.js" var="jqueryJs" />
+    <spring:url value="resources/js/app.js" var="appJs" />
     <spring:url value="resources/js/bootstrap.min.js" var="bootStrapJs" />
+    <spring:url value="resources/js/bootstrap-datepicker.js" var="bootStrapDatePickerJs" />
+    <spring:url value="resources/js/jquery.min.js" var="jqueryJs" />
     <spring:url value="resources/js/jquery.validate.js" var="validateJs" />
-    <spring:url value="resources/css/bootstrap-theme.min.css" var="bootstrapThemeCSS" />
+    <spring:url value="resources/js/jquery-ui-1.10.3.min.js" var="jqueryUIJs" />
+
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrapCSS" />
+    <spring:url value="resources/css/font-awesome.min.css" var="fontCSS" />
+    <spring:url value="resources/css/style.css" var="styleCSS" />
 
 
-    <style type="text/css">@import "${bootstrapThemeCSS}"; </style>
     <style type="text/css">@import "${bootstrapCSS}"; </style>
+    <style type="text/css">@import "${styleCSS}"; </style>
+    <style type="text/css">@import "${fontCSS}"; </style>
 
-    <script src="${jqueryJs}" type="text/javascript"></script>
+    <script src="${appJs}" type="text/javascript"></script>
     <script src="${bootStrapJs}" type="text/javascript"></script>
+    <script src="${bootStrapDatePickerJs}" type="text/javascript"></script>
+    <script src="${jqueryJs}" type="text/javascript"></script>
     <script src="${validateJs}" type="text/javascript"></script>
+    <script src="${jqueryUIJs}" type="text/javascript"></script>
 
 
     <dec:head/>
