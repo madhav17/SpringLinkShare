@@ -33,12 +33,14 @@ public class LoginController {
 
     public final Logger log = Util.getLogger(LoginController.class);
 
-//    @RequestMapping(value ={ "/" ,"/welcome**" } , method = RequestMethod.GET)
-//    public String homePage(ModelMap model){
-//        model.addAttribute("greeting","Welcome to LinkSharing");
-//        return "welcome";
-//    }
-    @RequestMapping(value = {"/","/login/signIn"})
+    @RequestMapping(value = {"/login/welcome"}, method = RequestMethod.GET)
+    public ModelAndView homePage(ModelMap model) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login/welcome");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = {"/", "/login/signIn"})
     //set below params becoz we required to check for login purpose
     public ModelAndView signIn(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
         log.error(error);

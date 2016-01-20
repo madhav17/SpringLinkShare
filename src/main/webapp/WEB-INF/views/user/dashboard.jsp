@@ -4,11 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <spring:url value="/WEB-INF/views/layout/main.jsp" var="mainLayout" />
     <title></title>
 </head>
 <body style="text-align: center;background-color: cadetblue;">
-<jsp:include page="${mainLayout}"/>
 <div style="text-align: right">
     <a href="/topic/create">Create Topic</a>
     &nbsp;

@@ -9,7 +9,7 @@
 </head>
 <body style="text-align: center;margin-top: 10%;background-color: cadetblue;">
 
-<div>
+<div style="margin-top:100px;margin-left: 100px;">
 
 
     <c:if test="${not empty error}">
