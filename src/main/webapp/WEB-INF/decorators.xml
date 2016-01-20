@@ -15,4 +15,23 @@
         </excludes>
         <pattern>/*</pattern>
     </decorator>
+
+    <!--defiing multiple decoraters-->
+    <decorator name="login" page="login.jsp">
+        <excludes>
+            <pattern>/nodecorate/*</pattern>
+            <pattern>/styles/*</pattern>
+            <pattern>/assets/*</pattern>
+            <pattern>/scripts/*</pattern>
+            <pattern>/images/*</pattern>
+            <!--<pattern>/index.html</pattern>-->
+            <pattern>/META-INF/*</pattern>
+            <pattern>/css/*</pattern>
+            <pattern>/*.css</pattern>
+            <pattern>/rescources/css/*</pattern>
+        </excludes>
+        <pattern>/</pattern>
+        <pattern>/login/signIn</pattern>
+    </decorator>
+
 </decorators>
