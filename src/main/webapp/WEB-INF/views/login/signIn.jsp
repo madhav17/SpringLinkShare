@@ -10,7 +10,7 @@
 
 
 <!-- Top content -->
-<div class="top-content" style="background-color:grey;">
+<div class="top-content" style="background-color:#39435C;">
 
 
     <c:if test="${not empty error}">
