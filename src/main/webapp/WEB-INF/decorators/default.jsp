@@ -13,11 +13,11 @@
     <spring:url value="resources/js/jquery.js" var="jqueryJs" />
     <spring:url value="resources/js/bootstrap.min.js" var="bootStrapJs" />
     <spring:url value="resources/js/jquery.validate.js" var="validateJs" />
-    <spring:url value="resources/css/bootstrap-responsive.min.css" var="bootstrapResCSS" />
+    <spring:url value="resources/css/bootstrap-theme.min.css" var="bootstrapThemeCSS" />
     <spring:url value="resources/css/bootstrap.min.css" var="bootstrapCSS" />
 
 
-    <style type="text/css">@import "${bootstrapResCSS}"; </style>
+    <style type="text/css">@import "${bootstrapThemeCSS}"; </style>
     <style type="text/css">@import "${bootstrapCSS}"; </style>
 
     <script src="${jqueryJs}" type="text/javascript"></script>
