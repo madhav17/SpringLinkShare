@@ -5,7 +5,7 @@
 <%--for j spring security--%>
 <html>
 <head>
-    <title></title>
+    <title>Link Share</title>
 </head>
 <body style="text-align: center;margin-top: 10%;background-color: cadetblue;">
 
