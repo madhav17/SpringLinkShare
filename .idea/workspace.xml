@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9ddbde6-cf74-4606-8eed-d52398342a9a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/intelligrape/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/intelligrape/controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/intelligrape/controller/TopicController.java" afterPath="$PROJECT_DIR$/src/main/java/com/intelligrape/controller/TopicController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/intelligrape/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/com/intelligrape/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/intelligrape/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/com/intelligrape/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/intelligrape/service/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/intelligrape/service/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/signIn.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/signIn.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" />
     </list>
     <ignored path="SpringLinkShare.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,6 +35,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="decorators.xml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.75714284" vertical-offset="366" max-vertical-offset="731">
+              <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="User.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/intelligrape/model/User.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -55,16 +59,6 @@
                 <element signature="e#1794#1795#0" expanded="true" />
                 <element signature="e#1819#1820#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SecurityContext.class" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/4.0.1.RELEASE/spring-security-core-4.0.1.RELEASE.jar!/org/springframework/security/core/context/SecurityContext.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.08" vertical-offset="0" max-vertical-offset="255">
-              <caret line="7" column="53" selection-start-line="7" selection-start-column="53" selection-end-line="7" selection-end-column="53" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -89,10 +83,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserServiceImpl.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="UserServiceImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/intelligrape/service/UserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.87857145" vertical-offset="1250" max-vertical-offset="1598">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1250" max-vertical-offset="1598">
               <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -200,7 +194,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/user/dashboard.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/welcome.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators/default.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/intelligrape/dao/TopicDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/intelligrape/model/User.java" />
@@ -210,6 +203,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/intelligrape/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/intelligrape/controller/TopicController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/signIn.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" />
       </list>
     </option>
   </component>
@@ -866,12 +860,12 @@
       <workItem from="1453309941282" duration="7831000" />
       <workItem from="1453350179343" duration="1946000" />
       <workItem from="1453375049785" duration="34000" />
-      <workItem from="1453396570247" duration="4837000" />
+      <workItem from="1453396570247" duration="4883000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92096000" />
+    <option name="totallyTimeSpent" value="92142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="45" y="-4" width="1321" height="772" extended-state="6" />
@@ -1153,17 +1147,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml">
-      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="714">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/js/jquery.backstretch.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="565">
@@ -1326,7 +1309,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/intelligrape/service/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.87857145" vertical-offset="1250" max-vertical-offset="1598">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1250" max-vertical-offset="1598">
           <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1337,6 +1320,17 @@
             <element signature="e#2126#2127#0" expanded="true" />
             <element signature="e#2184#2185#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml">
+      <provider editor-type-id="com.intellij.jsf.yfilesGraph.editor.FacesNavigationFileEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75714284" vertical-offset="366" max-vertical-offset="731">
+          <caret line="34" column="30" selection-start-line="34" selection-start-column="30" selection-end-line="34" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>

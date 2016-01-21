@@ -32,6 +32,7 @@
         </excludes>
         <pattern>/</pattern>
         <pattern>/login/signIn</pattern>
+        <pattern>/login/signUp</pattern>
     </decorator>
 
 </decorators>
