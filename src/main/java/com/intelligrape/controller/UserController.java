@@ -32,11 +32,7 @@ public class UserController {
 
     @RequestMapping(value = "/register")
     public String register(HttpServletRequest request, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("username") String username, @RequestParam("password") String password) {
-        User currentUser = new User();
-        currentUser.firstName = firstName;
-        currentUser.lastName = lastName;
-        currentUser.username = username;
-        currentUser.password = password;
+        User currentUser = new User(firstName,lastName,username,password,true);
         userService.saveUser(currentUser);
         request.getSession().setAttribute("currentUser", currentUser);
         return "redirect:/user/dashboard";
@@ -44,7 +40,7 @@ public class UserController {
 
     @RequestMapping(value = "/dashboard")
     public String dashboard(HttpServletRequest request, Model model) {
-        User currentUser = (User) request.getSession().getAttribute("currentUser");
+        User currentUser = userService.getLoggedInUser();
         List<Topic> topicList = userService.findAllUserTopics(currentUser);
         model.addAttribute("topics", topicList);
         model.addAttribute("user", currentUser);
@@ -53,14 +49,14 @@ public class UserController {
 
     @RequestMapping(value = "/updateUser")
     public String updateUser(HttpServletRequest request,@RequestParam("firstName") String firstName,@RequestParam("lastName") String lastName,@RequestParam("password") String password,@RequestParam("id") int id) {
-        User user = userService.findById(id);
+        User user = userService.getLoggedInUser();
         userService.updateUser(user, firstName, lastName,password);
         return "redirect:/user/dashboard";
     }
 
     @RequestMapping(value = "/update")
     public String update(@RequestParam("id") int id,Model model) {
-        User user = userService.findById(id);
+        User user = userService.getLoggedInUser();
         model.addAttribute("user",user);
         return "user/update";
     }

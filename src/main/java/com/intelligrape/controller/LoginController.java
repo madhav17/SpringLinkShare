@@ -43,8 +43,6 @@ public class LoginController {
     @RequestMapping(value = {"/", "/login/signIn"})
     //set below params becoz we required to check for login purpose
     public ModelAndView signIn(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
-        log.error(error);
-        log.error(logout);
         ModelAndView model = new ModelAndView();
         model.addObject("title", "Spring Security Login Form - Database Authentication");
         model.addObject("message", "This is default page!");
@@ -97,13 +95,10 @@ public class LoginController {
         if (!(auth instanceof AnonymousAuthenticationToken)) {
             //UserDetail default class
             UserDetails userDetail = (UserDetails) auth.getPrincipal();
-            System.out.println(userDetail.getUsername());
-            System.out.println(userDetail.getAuthorities());
-            System.out.println(userDetail.isEnabled());
             model.addObject("username", userDetail.getUsername());
-        }
 
-        model.setViewName("403");
+            model.setViewName("403");
+        }
         return model;
 
     }

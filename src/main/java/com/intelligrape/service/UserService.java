@@ -20,4 +20,8 @@ public interface UserService {
     List<User> findAllUsers();
 
     List<Topic> findAllUserTopics(User user);
+
+    User getLoggedInUser();
+
+    User findByUsername(String username);
 }

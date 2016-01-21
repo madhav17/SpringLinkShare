@@ -10,6 +10,10 @@ import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -62,6 +66,23 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void saveUserAndRole(User employee,String role){
         userDao.saveEmployeeAndRole(employee,role);
+    }
+
+    public User findByUsername(String username){
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
+        criteria.add(Restrictions.eq("username",username));
+        return (User)criteria.uniqueResult();
+    }
+
+    public User getLoggedInUser(){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = null;
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            //UserDetail default class
+            UserDetails userDetail = (UserDetails) auth.getPrincipal();
+            user = findByUsername(userDetail.getUsername());
+        }
+        return user;
     }
 
 }

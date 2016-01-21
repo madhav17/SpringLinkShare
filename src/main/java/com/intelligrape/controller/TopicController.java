@@ -50,7 +50,7 @@ public class TopicController {
     public String save(HttpServletRequest request,@RequestParam("title") String title) {
         Topic topic = new Topic();
         topic.title = title;
-        topic.user = (User)request.getSession().getAttribute("currentUser");
+        topic.user = userService.getLoggedInUser();
         topicService.saveTopic(topic);
         return "redirect:/user/dashboard";
     }
