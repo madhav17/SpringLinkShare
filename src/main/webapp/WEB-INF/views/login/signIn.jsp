@@ -6,7 +6,7 @@
 <html>
 <head>
 </head>
-<body style="text-align: center;margin-top: 10%;background-color: cadetblue;">
+<body>
 
 
 <!-- Top content -->

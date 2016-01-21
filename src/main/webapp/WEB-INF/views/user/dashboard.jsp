@@ -13,10 +13,6 @@
     &nbsp;
     &nbsp;
     <a href="/user/update?id=${user.id}">Edit Details</a>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    <a href="/login/logout">Logout</a>
 </div>
 
 <div style="text-align: center;margin-top: 7%;">
