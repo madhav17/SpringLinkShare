@@ -10,7 +10,7 @@
 
 
 <!-- Top content -->
-<div class="top-content" style="background-color:#39435C;">
+<div class="top-content" style="background-color:#39435C;width: 100%;height: 100%;">
 
 
     <c:if test="${not empty error}">
@@ -21,7 +21,7 @@
     </c:if>
 
 
-    <div class="inner-bg">
+    <div class="inner-bg" style="width: 100%;height: 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 text">
@@ -74,15 +74,15 @@
                         <a class="btn btn-link-2" href="#">
                             Google Plus
                         </a>
+                        <a class="btn btn-link-2" href="#">
+                            Register
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
-
-<a href="/login/signUp"> Register </a>
 </body>
 </html>
