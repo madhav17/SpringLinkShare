@@ -30,25 +30,39 @@
                     <div class="form-bottom">
                         <form:form method="post" action="/user/register">
                             <div class="form-group">
-                                <label class="sr-only"for="firstName">First Name : </label>
-                                <input type="text" class="form-username form-control" name="firstName" id="firstName" required="true" placeholder="First Name"/>
+                                <label class="sr-only" for="firstName">First Name : </label>
+                                <input type="text" class="form-username form-control" name="firstName" id="firstName"
+                                       required="true" placeholder="First Name"/>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="lastName">Last Name : </label>
-                                <input type="text" class="form-username form-control" name="lastName" id="lastName" required="true" placeholder="Last Name"/>
+                                <input type="text" class="form-username form-control" name="lastName" id="lastName"
+                                       required="true" placeholder="Last Name"/>
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="userName">User Name : </label>
-                                <input type="email" class="form-username form-control" name="username" id="username" required="true" placeholder="User Name"/>
+                                <input type="email" class="form-username form-control" name="username" id="username"
+                                       required="true" placeholder="User Name"/>
                             </div>
                             <div class="form-group">
-                                <label class="sr-only"for="password">Password : </label>
-                                <input type="text" class="form-username form-control" name="password" id="password" required="true" placeholder="Password"/>
+                                <label class="sr-only" for="password">Password : </label>
+                                <input type="text" class="form-username form-control" name="password" id="password"
+                                       required="true" placeholder="Password"/>
                             </div>
 
                             <button type="submit" class="btn">Register</button>
 
                         </form:form>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 social-login">
+                            <div class="social-login-buttons">
+                                <a class="btn btn-link-2" href="/login/signIn">
+                                    Login
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
