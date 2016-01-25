@@ -1,6 +1,6 @@
 <%@ taglib prefix="dec" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -33,6 +33,7 @@
     <script src="${appJs}" type="text/javascript"></script>
     <script src="${validateJs}" type="text/javascript"></script>
 
+    <jsp:useBean id="userProfile" class="com.intelligrape.TagLibBean.UserProfile" scope="request"/>
 
     <dec:head/>
 </head>
@@ -54,7 +55,7 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <span>Jane Doe <i class="caret"></i></span>
+                        <span><jsp:getProperty name="userProfile" property="fullName"/> <i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                         <li class="dropdown-header text-center">Account</li>
@@ -62,7 +63,7 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href="#">
+                            <a href=<jsp:getProperty name="userProfile" property="url"/>>
 
                                 Profile
                             </a>
@@ -94,7 +95,7 @@
 
                 </div>
                 <div class="pull-left info">
-                    <p>Hello, Jane</p>
+                    <p>Hello, <jsp:getProperty name="userProfile" property="fullName"/></p>
 
 
                 </div>
@@ -133,17 +134,19 @@
 
         <!-- row end -->
         </section><!-- /.content -->
-        <div class = "content">
+        <div class="content">
 
             <dec:body/>
 
         </div>
         <%--<div class="footer-main">--%>
-            <%--Link Sharing--%>
+        <%--Link Sharing--%>
         <%--</div>--%>
-    </aside><!-- /.right-side -->
+    </aside>
+    <!-- /.right-side -->
 
-</div><!-- ./wrapper -->
+</div>
+<!-- ./wrapper -->
 
 
 </body>

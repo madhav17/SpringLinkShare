@@ -81,6 +81,10 @@ public class User implements Serializable {
         return enabled;
     }
 
+    public String getFullName(){
+        return this.firstName + " " + this.lastName;
+    }
+
 
 }
 
