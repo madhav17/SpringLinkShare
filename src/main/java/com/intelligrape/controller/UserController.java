@@ -31,11 +31,12 @@ public class UserController {
 
 
     @RequestMapping(value = "/register")
-    public String register(HttpServletRequest request, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("username") String username, @RequestParam("password") String password) {
-        User currentUser = new User(firstName,lastName,username,password,true);
-        userService.saveUser(currentUser);
-        request.getSession().setAttribute("currentUser", currentUser);
-        return "redirect:/user/dashboard";
+    public String register(HttpServletRequest request, @RequestParam(value = "firstName",required = false) String firstName, @RequestParam(value = "lastName",required = false) String lastName, @RequestParam(value = "username",required = false) String username, @RequestParam(value = "password",required = false) String password) {
+        if (firstName != null && lastName != null && username != null && password != null) {
+            User currentUser = new User(firstName, lastName, username, password, true);
+            userService.saveUserAndRole(currentUser, "ROLE_USER");
+        }
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/dashboard")
@@ -48,16 +49,16 @@ public class UserController {
     }
 
     @RequestMapping(value = "/updateUser")
-    public String updateUser(HttpServletRequest request,@RequestParam("firstName") String firstName,@RequestParam("lastName") String lastName,@RequestParam("password") String password,@RequestParam("id") int id) {
+    public String updateUser(HttpServletRequest request, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("password") String password, @RequestParam("id") int id) {
         User user = userService.getLoggedInUser();
-        userService.updateUser(user, firstName, lastName,password);
+        userService.updateUser(user, firstName, lastName, password);
         return "redirect:/user/dashboard";
     }
 
     @RequestMapping(value = "/update")
-    public String update(@RequestParam("id") int id,Model model) {
+    public String update(@RequestParam("id") int id, Model model) {
         User user = userService.getLoggedInUser();
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "user/update";
     }
 }
