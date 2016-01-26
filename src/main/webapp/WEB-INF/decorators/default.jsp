@@ -1,6 +1,9 @@
 <%@ taglib prefix="dec" uri="http://www.opensymphony.com/sitemesh/decorator" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="g" uri="/WEB-INF/username.tld" %>
+<%@ taglib prefix="p" uri="/WEB-INF/profile.tld" %>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 <head>
@@ -10,16 +13,16 @@
 
 
     <%--global css goes here...--%>
-    <spring:url value="/resources/js/app.js" var="appJs" />
-    <spring:url value="/resources/js/bootstrap.min.js" var="bootStrapJs" />
-    <spring:url value="/resources/js/bootstrap-datepicker.js" var="bootStrapDatePickerJs" />
-    <spring:url value="/resources/js/jquery.min.js" var="jqueryJs" />
-    <spring:url value="/resources/js/jquery.validate.js" var="validateJs" />
-    <spring:url value="/resources/js/jquery-ui-1.10.3.min.js" var="jqueryUIJs" />
+    <spring:url value="/resources/js/app.js" var="appJs"/>
+    <spring:url value="/resources/js/bootstrap.min.js" var="bootStrapJs"/>
+    <spring:url value="/resources/js/bootstrap-datepicker.js" var="bootStrapDatePickerJs"/>
+    <spring:url value="/resources/js/jquery.min.js" var="jqueryJs"/>
+    <spring:url value="/resources/js/jquery.validate.js" var="validateJs"/>
+    <spring:url value="/resources/js/jquery-ui-1.10.3.min.js" var="jqueryUIJs"/>
 
-    <spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCSS" />
-    <spring:url value="/resources/css/font-awesome.min.css" var="fontCSS" />
-    <spring:url value="/resources/css/style.css" var="styleCSS" />
+    <spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCSS"/>
+    <spring:url value="/resources/css/font-awesome.min.css" var="fontCSS"/>
+    <spring:url value="/resources/css/style.css" var="styleCSS"/>
 
 
     <style type="text/css">@import "${bootstrapCSS}"; </style>
@@ -33,7 +36,7 @@
     <script src="${appJs}" type="text/javascript"></script>
     <script src="${validateJs}" type="text/javascript"></script>
 
-    <jsp:useBean id="userProfile" class="com.intelligrape.TagLibBean.UserProfile" scope="request"/>
+    <%--<jsp:useBean id="userProfile" class="com.intelligrape.TagLibBean.UserProfile" scope="request"/>--%>
 
     <dec:head/>
 </head>
@@ -55,7 +58,8 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                        <span><jsp:getProperty name="userProfile" property="fullName"/> <i class="caret"></i></span>
+                        <%--<span><jsp:getProperty name="userProfile" property="fullName"/> <i class="caret"></i></span>--%>
+                        <span><g:UserName/><i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                         <li class="dropdown-header text-center">Account</li>
@@ -63,7 +67,8 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href=<jsp:getProperty name="userProfile" property="url"/>>
+                            <%--<a href=<jsp:getProperty name="userProfile" property="url"/>>--%>
+                            <a href=<p:Profile/>>
 
                                 Profile
                             </a>
@@ -95,7 +100,10 @@
 
                 </div>
                 <div class="pull-left info">
-                    <p>Hello, <jsp:getProperty name="userProfile" property="fullName"/></p>
+                    <p>Hello,
+                        <%--<jsp:getProperty name="userProfile" property="fullName"/>--%>
+                        <g:UserName/>
+                    </p>
 
 
                 </div>

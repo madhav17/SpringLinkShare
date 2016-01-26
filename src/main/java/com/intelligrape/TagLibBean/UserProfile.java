@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,7 +24,32 @@ import java.sql.ResultSet;
 /*
 * cannot inject service here need to write native again
 * */
-public class UserProfile implements Serializable {
+
+// or we can use this aanotation
+
+//@Configuration
+/*
+
+@Autowired
+    public UserService userService;
+
+
+@Configurable - aspectJ allows you to plug a weaver at load-time/compile-time,
+so that even objects that are not instantiated by spring can be spring aware
+
+ http://docs.spring.io/spring/docs/3.0.x/spring-framework-reference/html/aop.html#aop-using-aspectj
+
+  */
+
+
+/*another Soultion above solution may not work
+
+The servlet container is creating instances of your tag class, which is not under control of Spring, so autowiring does not work in a tag class. Autowiring only works for Spring beans - objects that are created by Spring.
+
+You can lookup the Spring web application context and then get your ProductService bean from it:
+ */
+
+ public class UserProfile implements Serializable {
 
     private String fullName = null;
     private String url = null;
