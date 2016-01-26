@@ -3,6 +3,7 @@ package com.intelligrape.controller;
 import com.intelligrape.model.Topic;
 import com.intelligrape.model.User;
 import com.intelligrape.service.UserService;
+import com.intelligrape.util.enums.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class UserController {
     public String register(HttpServletRequest request, @RequestParam(value = "firstName",required = false) String firstName, @RequestParam(value = "lastName",required = false) String lastName, @RequestParam(value = "username",required = false) String username, @RequestParam(value = "password",required = false) String password) {
         if (firstName != null && lastName != null && username != null && password != null) {
             User currentUser = new User(firstName, lastName, username, password, true);
-            userService.saveUserAndRole(currentUser, "ROLE_USER");
+            userService.saveUserAndRole(currentUser, Role.ROLE_USER.name());
         }
         return "redirect:/";
     }

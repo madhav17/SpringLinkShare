@@ -12,6 +12,7 @@
             <pattern>/css/*</pattern>
             <pattern>/*.css</pattern>
             <pattern>/rescources/css/*</pattern>
+            <pattern>/rescources/fonts/*</pattern>
         </excludes>
         <pattern>/*</pattern>
     </decorator>
@@ -28,6 +29,7 @@
             <pattern>/META-INF/*</pattern>
             <pattern>/css/*</pattern>
             <pattern>/*.css</pattern>
+            <pattern>/rescources/fonts/*</pattern>
             <pattern>/rescources/css/*</pattern>
         </excludes>
         <pattern>/</pattern>

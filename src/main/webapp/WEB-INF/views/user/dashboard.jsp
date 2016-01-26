@@ -8,11 +8,6 @@
 </head>
 <body style="text-align: center;background-color: cadetblue;">
 <div style="text-align: right">
-    <a href="/topic/create">Create Topic</a>
-    &nbsp;
-    &nbsp;
-    &nbsp;
-    <a href="/user/update?id=${user.id}">Edit Details</a>
 </div>
 
 

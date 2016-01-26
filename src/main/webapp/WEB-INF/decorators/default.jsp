@@ -23,11 +23,13 @@
     <spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCSS"/>
     <spring:url value="/resources/css/font-awesome.min.css" var="fontCSS"/>
     <spring:url value="/resources/css/style.css" var="styleCSS"/>
+    <spring:url value="/resources/css/ionicons.min.css" var="ioniconsCSS"/>
 
 
     <style type="text/css">@import "${bootstrapCSS}"; </style>
     <style type="text/css">@import "${fontCSS}"; </style>
     <style type="text/css">@import "${styleCSS}"; </style>
+    <style type="text/css">@import "${ioniconsCSS}"; </style>
 
     <script src="${jqueryJs}" type="text/javascript"></script>
     <script src="${jqueryUIJs}" type="text/javascript"></script>
@@ -37,6 +39,9 @@
     <script src="${validateJs}" type="text/javascript"></script>
 
     <%--<jsp:useBean id="userProfile" class="com.intelligrape.TagLibBean.UserProfile" scope="request"/>--%>
+
+    <%-- Links varaibles   --%>
+    <c:set value="/topic/create" var="createTopicLink" />
 
     <dec:head/>
 </head>
@@ -114,10 +119,17 @@
                         <i></i> <span>Dashboard</span>
                     </a>
                 </li>
-                <li>
+                <li class="treeview">
                     <a href="#">
-                        <i></i> <span>General</span>
+                        <i class="fa fa-tasks"></i>
+                        <span>Topic</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
+                    <ul class="treeview-menu">
+                        <li><a href="${createTopicLink}"><i class="fa fa-angle-double-right"></i> Create Topic </a></li>
+                        <li><a href=""><i class="fa fa-angle-double-right"></i> List Topic </a></li>
+                        <li><a href=""><i class="fa fa-angle-double-right"></i> Search Topic</a></li>
+                    </ul>
                 </li>
 
                 <li>
