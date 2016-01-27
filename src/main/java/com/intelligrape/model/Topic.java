@@ -17,9 +17,10 @@ public class Topic {
 
     }
 
-    public Topic(User user,String title){
+    public Topic(User user,String title,String link){
         this.user  = user;
         this.title = title;
+        this.link = link;
     }
 
     @Id
@@ -30,6 +31,10 @@ public class Topic {
     @NotEmpty
     @Column(name = "title",nullable = false)
     public String title;
+
+    @NotEmpty
+    @Column(name = "link",nullable = false)
+    public String link;
 
     @OneToOne
     @JoinColumn(name="user_id",nullable = false)
@@ -45,6 +50,14 @@ public class Topic {
 
     public int getId(){
         return id;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
 }
