@@ -30,17 +30,6 @@ public class TopicController {
         return "topic/list";
     }
 
-
-//    @RequestMapping(value = "/create")
-//    public String create() {
-//        Topic topic = new Topic();
-//        topic.title = "Topic 1";
-//        topic.user = userService.findById((int) 1);
-//        System.out.println("errors");
-//        System.out.println("errors");
-//        topicService.saveTopic(topic);
-//        return "topic/list";
-//    }
     @RequestMapping(value = "/create")
     public String create(){
         return "topic/create";

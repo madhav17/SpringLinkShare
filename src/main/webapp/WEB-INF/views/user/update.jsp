@@ -5,28 +5,52 @@
 <head>
     <title></title>
 </head>
-<body style="text-align: center;margin-top: 10%;background-color: cadetblue;">
+<body>
 
-<form:form method="post" action="/user/updateUser">
-    <input type="hidden" name="id" value="${user.id}">
-    <label for="firstName">First Name : </label>
-    <input type="text" name="firstName" id="firstName" required="true" value="${user.firstName}"/>
-    <br/>
-    <br/>
-    <label for="lastName">Last Name : </label>
-    <input type="text" name="lastName" id="lastName" required="true" value="${user.lastName}"/>
+<div class="row">
+    <div class="col-md-12">
+        <section class="panel">
+            <header class="panel-heading">Topic List</header>
+            <div class="panel-body">
 
-    <br/>
-    <br/>
-    <label for="password">Password : </label>
-    <input type="text" name="password" id="password" required="true" value="${user.password}"/>
+                <form:form method="post" action="/user/updateUser" cssClass="form-horizontal">
+                    <input type="hidden" name="id" value="${user.id}">
 
-    <br/>
-    <br/>
-    <input type="submit" value="Update Info"/>
+                    <div class="form-group">
+                        <label for="firstName" class="col-sm-2 control-label">First Name : </label>
 
-</form:form>
+                        <div class="col-sm-6">
+                            <input type="text" name="firstName" class="form-control" id="firstName" required="true"
+                                   value="${user.firstName}"/>
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="lastName" class="col-sm-2 control-label">Last Name : </label>
 
+                        <div class="col-sm-6">
+                            <input type="text" name="lastName" class="form-control" id="lastName" required="true"
+                                   value="${user.lastName}"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">Password : </label>
+
+                        <div class="col-sm-6">
+                            <input type="text" name="password" class="form-control" id="password" required="true"
+                                   value="${user.password}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Update Info</button>
+                        </div>
+                    </div>
+
+                </form:form>
+            </div>
+        </section>
+    </div>
 </body>
 </html>

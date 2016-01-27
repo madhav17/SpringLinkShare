@@ -42,13 +42,14 @@
 
     <%-- Links varaibles   --%>
     <c:set value="/topic/create" var="createTopicLink" />
+    <c:set value="/user/dashboard" var="dashboard" />
 
     <dec:head/>
 </head>
 <body class="skin-black">
 <!-- header logo: style can be found in header.less -->
 <header class="header">
-    <a href="#" class="logo">
+    <a href="${dashboard}" class="logo">
         Link Sharing
     </a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -66,6 +67,7 @@
                         <%--<span><jsp:getProperty name="userProfile" property="fullName"/> <i class="caret"></i></span>--%>
                         <%--<span><g:UserName/><i class="caret"></i></span>--%>
                         <!-- Setting value in session when user get Logged in-->
+                        <i class="fa fa-user"></i>
                         <span><%= (String)session.getAttribute("username")%><i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
@@ -76,7 +78,7 @@
                         <li>
                             <%--<a href=<jsp:getProperty name="userProfile" property="url"/>>--%>
                             <%--<a href=<p:Profile/>>--%>
-                            <a href=<%= (String)session.getAttribute("profileUrl")%>
+                            <a href=<%= (String)session.getAttribute("profileUrl")%>>
 
                                 Profile
                             </a>
@@ -119,7 +121,7 @@
             </div>
             <ul class="sidebar-menu">
                 <li class="active">
-                    <a href="#">
+                    <a href="${dashboard}">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
@@ -155,14 +157,11 @@
 
     <aside class="right-side">
 
+        <section class="content">
+        <dec:body/>
 
         <!-- row end -->
         </section><!-- /.content -->
-        <div class="content">
-
-            <dec:body/>
-
-        </div>
         <%--<div class="footer-main">--%>
         <%--Link Sharing--%>
         <%--</div>--%>

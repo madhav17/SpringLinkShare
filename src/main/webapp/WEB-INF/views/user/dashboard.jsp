@@ -6,12 +6,12 @@
 <head>
     <title></title>
 </head>
-<body style="text-align: center;background-color: cadetblue;">
-<div style="text-align: right">
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <c:set value="${topics}" var="topicList" scope="request"/>
+        <jsp:include page="/WEB-INF/views/topic/topicList.jsp"/>
+    </div>
 </div>
-
-
-<c:set value="${topics}" var="topicList" scope="request"/>
-<jsp:include page="/WEB-INF/views/topic/topicList.jsp"/>
 </body>
 </html>
