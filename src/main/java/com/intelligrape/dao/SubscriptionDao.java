@@ -12,4 +12,8 @@ public interface SubscriptionDao {
     void saveSubscription(Subscription subscription);
 
     List<Subscription> findAllSubscription();
+
+    void deleteSubscription(Subscription subscription);
+
+    void deleteSubscription(int id);
 }

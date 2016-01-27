@@ -24,4 +24,12 @@ public class SubscriptionDaoImpl extends AbstractDao<Integer, Subscription> impl
         return (List<Subscription>) criteria.list();
     }
 
+    public void deleteSubscription(Subscription subscription){
+        delete(subscription);
+    }
+
+    public void deleteSubscription(int id){
+        delete(id);
+    }
+
 }

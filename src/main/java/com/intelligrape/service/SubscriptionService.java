@@ -14,6 +14,12 @@ public interface SubscriptionService {
 
     void saveSubscription(Subscription subscription);
 
+    void deleteSubscription(Subscription subscription);
+
+    void deleteSubscription(int id);
+
+    void createSubscription(User user,Topic topic,Date dateCreated);
+
     void updateSubscription(Subscription subscription, User user,Topic topic,Date dateCreated);
 
     List<Subscription> findAllSubscription();

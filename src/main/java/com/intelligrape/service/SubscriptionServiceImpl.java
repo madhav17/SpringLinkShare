@@ -29,6 +29,23 @@ public class SubscriptionServiceImpl implements SubscriptionService {
     }
 
     @Transactional
+    public void createSubscription(User user,Topic topic,Date dateCreated){
+        Subscription subscription = new Subscription(user,topic,dateCreated);
+        saveSubscription(subscription);
+    }
+
+    @Transactional
+    public void deleteSubscription(Subscription subscription){
+       subscriptionDao.deleteSubscription(subscription);
+    }
+
+    @Transactional
+    public void deleteSubscription(int id){
+        subscriptionDao.deleteSubscription(id);
+    }
+
+
+    @Transactional
     public void updateSubscription(Subscription subscription,User user,Topic topic,Date dateCreated){
 
     }
