@@ -26,10 +26,11 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Transactional
-    public void updateTopic(Topic topic,String title){
+    public void updateTopic(Topic topic,String title,String link){
         Topic entity = topicDao.findById(topic.id);
         if(entity!=null){
             entity.title = title;
+            entity.link = link;
             topicDao.saveTopic(entity);
         }
     }

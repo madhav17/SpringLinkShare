@@ -9,11 +9,13 @@
         <table class="table table-bordered">
             <tr class="active">
                 <th><b>Title</b></th>
+                <th><b>Link</b></th>
                 <th><b>Action</b></th>
             </tr>
             <c:forEach var="topic" items="${requestScope.topicList}">
                 <tr class="active">
                     <td>${topic.title}</td>
+                    <td>${topic.link}</td>
                     <td><a href="/topic/update?id=${topic.id}">Edit</a></td>
                 </tr>
             </c:forEach>

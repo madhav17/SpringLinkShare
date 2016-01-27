@@ -14,8 +14,7 @@ import java.util.List;
 
 @Service("subscriptionService")
 @Transactional
-
-public class SubscriptionServiceImpl {
+public class SubscriptionServiceImpl implements SubscriptionService {
 
     @Autowired
     public SubscriptionDao subscriptionDao;
@@ -30,7 +29,7 @@ public class SubscriptionServiceImpl {
     }
 
     @Transactional
-    public void updateTopic(Subscription subscription,User user,Topic topic,Date dateCreated){
+    public void updateSubscription(Subscription subscription,User user,Topic topic,Date dateCreated){
 
     }
 

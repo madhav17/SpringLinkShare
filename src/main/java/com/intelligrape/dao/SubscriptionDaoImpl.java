@@ -2,9 +2,13 @@ package com.intelligrape.dao;
 
 import com.intelligrape.model.Subscription;
 import org.hibernate.Criteria;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository("subscriptionDao")
+@Component
 public class SubscriptionDaoImpl extends AbstractDao<Integer, Subscription> implements SubscriptionDao {
 
     public Subscription findById(int id) {

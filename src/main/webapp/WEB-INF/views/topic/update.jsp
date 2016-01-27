@@ -28,7 +28,7 @@
 
                         <div class="col-sm-6">
                             <input type="text" class="form-control" id="link" name="link" placeholder="Link"
-                                   required="true">
+                                   required="true" value="${topic.link}">
                         </div>
                     </div>
 

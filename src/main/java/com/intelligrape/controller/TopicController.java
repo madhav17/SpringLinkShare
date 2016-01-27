@@ -36,18 +36,19 @@ public class TopicController {
     }
 
     @RequestMapping(value = "/save")
-    public String save(HttpServletRequest request,@RequestParam("title") String title) {
+    public String save(HttpServletRequest request,@RequestParam("title") String title,@RequestParam("link") String link) {
         Topic topic = new Topic();
         topic.title = title;
+        topic.link = link;
         topic.user = userService.getLoggedInUser();
         topicService.saveTopic(topic);
         return "redirect:/user/dashboard";
     }
 
     @RequestMapping(value = "/updateTopic")
-    public String updateTopic(HttpServletRequest request,@RequestParam("title") String title,@RequestParam("id") int id) {
+    public String updateTopic(HttpServletRequest request,@RequestParam("title") String title,@RequestParam("id") int id,@RequestParam("link") String link) {
         Topic topic = topicService.findById(id);
-        topicService.updateTopic(topic, title);
+        topicService.updateTopic(topic, title,link);
         return "redirect:/user/dashboard";
     }
 

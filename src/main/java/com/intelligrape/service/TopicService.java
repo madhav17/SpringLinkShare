@@ -11,7 +11,7 @@ public interface TopicService {
 
     void saveTopic(Topic topic);
 
-    void updateTopic(Topic topic, String title);
+    void updateTopic(Topic topic, String title,String link);
 
     List<Topic> findAllTopics();
 }
