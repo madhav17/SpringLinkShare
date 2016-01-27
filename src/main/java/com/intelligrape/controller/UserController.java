@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -32,7 +33,7 @@ public class UserController {
 
 
     @RequestMapping(value = "/register")
-    public String register(HttpServletRequest request, @RequestParam(value = "firstName",required = false) String firstName, @RequestParam(value = "lastName",required = false) String lastName, @RequestParam(value = "username",required = false) String username, @RequestParam(value = "password",required = false) String password) {
+    public String register(HttpServletRequest request, @RequestParam(value = "firstName", required = false) String firstName, @RequestParam(value = "lastName", required = false) String lastName, @RequestParam(value = "username", required = false) String username, @RequestParam(value = "password", required = false) String password) {
         if (firstName != null && lastName != null && username != null && password != null) {
             User currentUser = new User(firstName, lastName, username, password, true);
             userService.saveUserAndRole(currentUser, Role.ROLE_USER.name());
@@ -41,9 +42,13 @@ public class UserController {
     }
 
     @RequestMapping(value = "/dashboard")
-    public String dashboard(HttpServletRequest request, Model model) {
+    public String dashboard(HttpServletRequest request, HttpSession httpSession, Model model) {
+
         User currentUser = userService.getLoggedInUser();
         List<Topic> topicList = userService.findAllUserTopics(currentUser);
+        httpSession.setAttribute("currentUser", currentUser);
+        httpSession.setAttribute("username", currentUser.getFullName());
+        httpSession.setAttribute("profileUrl", "/user/update?id=" + currentUser.getId());
         model.addAttribute("topics", topicList);
         model.addAttribute("user", currentUser);
         return "user/dashboard";

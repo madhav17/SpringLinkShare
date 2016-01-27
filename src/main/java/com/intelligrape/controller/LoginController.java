@@ -2,6 +2,7 @@ package com.intelligrape.controller;
 
 import com.intelligrape.model.User;
 import com.intelligrape.service.LoginService;
+import com.intelligrape.service.UserService;
 import com.intelligrape.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,6 +34,9 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    private UserService userService;
+
     public final Logger log = Util.getLogger(LoginController.class);
 
     @RequestMapping(value = {"/login/welcome"}, method = RequestMethod.GET)
@@ -45,6 +49,8 @@ public class LoginController {
     @RequestMapping(value = {"/", "/login/signIn"})
     //set below params becoz we required to check for login purpose
     public ModelAndView signIn(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
+        log.error("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
+        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         ModelAndView model = new ModelAndView();
         model.addObject("title", "Spring Security Login Form - Database Authentication");
         model.addObject("message", "This is default page!");
@@ -59,21 +65,6 @@ public class LoginController {
         return model;
     }
 
-    @RequestMapping(value = "/user/dashboard")
-    public String home(@RequestParam("username") String username, @RequestParam("password") String password, HttpServletRequest request) {
-        String url = "redirect:/user/dashboard";
-        User currentUser = (User) request.getSession().getAttribute("currentUser");
-        if (currentUser == null) {
-            List<User> userList = loginService.getUser(username, password);
-            if (userList.size() > 0) {
-                currentUser = userList.get(0);
-                request.getSession().setAttribute("currentUser", currentUser);
-            } else {
-                url = "redirect:/";
-            }
-        }
-        return url;
-    }
 
     @RequestMapping(value = "/login/signUp")
     public String signUp() {
@@ -81,9 +72,9 @@ public class LoginController {
     }
 
     @RequestMapping(value = "login/logout")
-    public String logout(HttpServletRequest request,HttpServletResponse response) {
+    public String logout(HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (auth != null){
+        if (auth != null) {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/";

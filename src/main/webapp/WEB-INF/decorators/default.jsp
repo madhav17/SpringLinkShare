@@ -64,7 +64,9 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
                         <%--<span><jsp:getProperty name="userProfile" property="fullName"/> <i class="caret"></i></span>--%>
-                        <span><g:UserName/><i class="caret"></i></span>
+                        <%--<span><g:UserName/><i class="caret"></i></span>--%>
+                        <!-- Setting value in session when user get Logged in-->
+                        <span><%= (String)session.getAttribute("username")%><i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                         <li class="dropdown-header text-center">Account</li>
@@ -73,7 +75,8 @@
 
                         <li>
                             <%--<a href=<jsp:getProperty name="userProfile" property="url"/>>--%>
-                            <a href=<p:Profile/>>
+                            <%--<a href=<p:Profile/>>--%>
+                            <a href=<%= (String)session.getAttribute("profileUrl")%>
 
                                 Profile
                             </a>
@@ -107,7 +110,8 @@
                 <div class="pull-left info">
                     <p>Hello,
                         <%--<jsp:getProperty name="userProfile" property="fullName"/>--%>
-                        <g:UserName/>
+                        <%--<g:UserName/>--%>
+                        <%= (String)session.getAttribute("username")%>
                     </p>
 
 
