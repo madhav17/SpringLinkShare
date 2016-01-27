@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-md-12">
         <section class="panel">
-            <header class="panel-heading">Topic List</header>
+            <header class="panel-heading">Create Topic</header>
             <div class="panel-body">
 
                 <form:form method="post" action="/topic/save" cssClass="form-horizontal">
