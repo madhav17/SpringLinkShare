@@ -42,7 +42,7 @@ public class UtilService {
     public void createUserAndTopic(String firstName,String lastName,String username,String password,String title,Boolean enabled){
         User user = new User(firstName,lastName,username,password,enabled);
         userService.saveUserAndRole(user,Role.ROLE_USER.name());
-        topicService.saveTopic(new Topic(user,title));
+        topicService.saveTopic(new Topic(user,title,"https://www.google.co.in/"));
     }
 
 }
