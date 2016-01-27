@@ -120,7 +120,7 @@
             <ul class="sidebar-menu">
                 <li class="active">
                     <a href="#">
-                        <i></i> <span>Dashboard</span>
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
                 <li class="treeview">
@@ -136,18 +136,18 @@
                     </ul>
                 </li>
 
-                <li>
+                <li class="treeview">
                     <a href="#">
-                        <i></i> <span>Basic Elements</span>
+                        <i class="fa fa-pencil-square-o"></i>
+                        <span>Subscription</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
-                </li>
 
-                <li>
-                    <a href="#">
-                        <i></i> <span>Simple tables</span>
-                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href=""><i class="fa fa-angle-double-right"></i> Subscribe Topic </a></li>
+                        <li><a href=""><i class="fa fa-angle-double-right"></i> Subscribed Topic </a></li>
+                    </ul>
                 </li>
-
             </ul>
         </section>
         <!-- /.sidebar -->

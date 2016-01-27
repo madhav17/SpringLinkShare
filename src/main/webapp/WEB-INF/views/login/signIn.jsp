@@ -66,12 +66,6 @@
 
                     <div class="social-login-buttons">
                         <a class="btn btn-link-2" href="#">
-                            Facebook
-                        </a>
-                        <a class="btn btn-link-2" href="#">
-                            Twitter
-                        </a>
-                        <a class="btn btn-link-2" href="#">
                             Google Plus
                         </a>
                         <a class="btn btn-link-2" href="/login/signUp">

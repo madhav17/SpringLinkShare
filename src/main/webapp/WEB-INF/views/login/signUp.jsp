@@ -58,7 +58,7 @@
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
                             <div class="social-login-buttons">
-                                <a class="btn btn-link-2" href="/login/signIn">
+                                <a class="btn btn-link-2" href="/">
                                     Login
                                 </a>
                             </div>
