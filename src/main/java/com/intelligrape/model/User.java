@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "user", uniqueConstraints = {
@@ -49,6 +50,10 @@ public class User implements Serializable {
     // can not use @NotEmpty This is completely wrong. An integer cannot be considered as a string, collection, map or array. Use the standard @NotNull instead.
     @Column(name = "enabled", nullable = false)
     public Boolean enabled;
+
+    @OneToMany(mappedBy = "user") // Subscription model has user
+    public Set<Subscription> subscriptionSet;
+
 
 //    @DateTimeFormat(pattern = "dd/MM/yyyy")
 //    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")

@@ -1,11 +1,13 @@
 package com.intelligrape.model;
 
 import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.util.Set;
 
 @Entity
 @Table(name="topic")
@@ -31,8 +33,11 @@ public class Topic {
 
     @OneToOne
     @JoinColumn(name="user_id",nullable = false)
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade(CascadeType.ALL)
     public User user;
+
+    @OneToMany(mappedBy = "topic") // Subscription model has topic
+    public Set<Subscription> subscriptionSet;
 
     public String getTitle(){
         return title;

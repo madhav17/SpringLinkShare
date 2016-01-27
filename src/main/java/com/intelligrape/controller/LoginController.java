@@ -49,8 +49,6 @@ public class LoginController {
     @RequestMapping(value = {"/", "/login/signIn"})
     //set below params becoz we required to check for login purpose
     public ModelAndView signIn(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout) {
-        log.error("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
-        System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
         ModelAndView model = new ModelAndView();
         model.addObject("title", "Spring Security Login Form - Database Authentication");
         model.addObject("message", "This is default page!");
