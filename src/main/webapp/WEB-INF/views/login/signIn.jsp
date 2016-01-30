@@ -14,10 +14,10 @@
 
 
     <c:if test="${not empty error}">
-        <div class="error">${error}</div>
+        <div class="infoMsg">${error}</div>
     </c:if>
     <c:if test="${not empty msg}">
-        <div class="msg">${msg}</div>
+        <div class="infoMsg">${msg}</div>
     </c:if>
 
 

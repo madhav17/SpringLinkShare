@@ -21,12 +21,14 @@
     <spring:url value="/resources/css/font-awesome.min.css" var="fontCSS" />
     <spring:url value="/resources/css/styleLogin.css" var="styleLoginCSS" />
     <spring:url value="/resources/css/form-elements.css" var="formElementCSS" />
+    <spring:url value="/resources/css/appCustom.css" var="customCSS"/>
 
 
     <style type="text/css">@import "${bootstrapCSS}"; </style>
     <style type="text/css">@import "${fontCSS}"; </style>
     <style type="text/css">@import "${styleLoginCSS}"; </style>
     <style type="text/css">@import "${formElementCSS}"; </style>
+    <style type="text/css">@import "${customCSS}"; </style>
 
     <script src="${jqueryJs}" type="text/javascript"></script>
     <script src="${bootStrapJs}" type="text/javascript"></script>

@@ -34,35 +34,40 @@ public class TopicController {
     }
 
     @RequestMapping(value = "/create")
-    public String create(){
-        return "topic/create";
+    public ModelAndView create() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("topic/create");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/save")
-    public String save(HttpServletRequest request,@RequestParam("title") String title,@RequestParam("link") String link,HttpSession httpSession) {
-        User user = (User)httpSession.getAttribute("currentUser");
-        Topic topic = new Topic(user,title,link);
-        topicService.saveTopicCreateSubscription(topic,user);
-        return "redirect:/user/dashboard";
+    public ModelAndView save(HttpServletRequest request, @RequestParam("title") String title, @RequestParam("link") String link, HttpSession httpSession) {
+        ModelAndView modelAndView = new ModelAndView();
+        User user = (User) httpSession.getAttribute("currentUser");
+        Topic topic = new Topic(user, title, link);
+        topicService.saveTopicCreateSubscription(topic, user);
+        modelAndView.addObject("msg", ((topic != null) ? "Topic Created" : "Cannot Create Topic"));
+        modelAndView.setViewName("topic/create");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/updateTopic")
-    public String updateTopic(HttpServletRequest request,@RequestParam("title") String title,@RequestParam("id") int id,@RequestParam("link") String link) {
+    public String updateTopic(HttpServletRequest request, @RequestParam("title") String title, @RequestParam("id") int id, @RequestParam("link") String link) {
         Topic topic = topicService.findById(id);
-        topicService.updateTopic(topic, title,link);
+        topicService.updateTopic(topic, title, link);
         return "redirect:/user/dashboard";
     }
 
     @RequestMapping(value = "/update")
-    public String update(@RequestParam("id") int id,Model model) {
+    public String update(@RequestParam("id") int id, Model model) {
         Topic topic = topicService.findById(id);
-        model.addAttribute("topic",topic);
+        model.addAttribute("topic", topic);
         return "topic/update";
     }
 
     @RequestMapping(value = "/ajaxList")
-    public ModelAndView list(HttpSession httpSession){
-        User user = (User)httpSession.getAttribute("currentUser");
+    public ModelAndView list(HttpSession httpSession) {
+        User user = (User) httpSession.getAttribute("currentUser");
         ModelAndView modelAndView = new ModelAndView();
         List<Topic> topicList = userService.findAllUserTopics(user);
         modelAndView.addObject("topicList", topicList);

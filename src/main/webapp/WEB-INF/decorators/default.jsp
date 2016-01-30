@@ -19,11 +19,13 @@
     <spring:url value="/resources/js/jquery.min.js" var="jqueryJs"/>
     <spring:url value="/resources/js/jquery.validate.js" var="validateJs"/>
     <spring:url value="/resources/js/jquery-ui-1.10.3.min.js" var="jqueryUIJs"/>
+    <spring:url value="/resources/js/appCustom.js" var="customJs"/>
 
     <spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCSS"/>
     <spring:url value="/resources/css/font-awesome.min.css" var="fontCSS"/>
     <spring:url value="/resources/css/style.css" var="styleCSS"/>
     <spring:url value="/resources/css/ionicons.min.css" var="ioniconsCSS"/>
+    <spring:url value="/resources/css/appCustom.css" var="customCSS"/>
 
     <spring:url value="/resources/images/ajaxLoader1.gif" var="ajaxImage"/>
 
@@ -31,6 +33,7 @@
     <style type="text/css">@import "${fontCSS}"; </style>
     <style type="text/css">@import "${styleCSS}"; </style>
     <style type="text/css">@import "${ioniconsCSS}"; </style>
+    <style type="text/css">@import "${customCSS}"; </style>
 
     <script src="${jqueryJs}" type="text/javascript"></script>
     <script src="${jqueryUIJs}" type="text/javascript"></script>
@@ -38,12 +41,13 @@
     <script src="${bootStrapDatePickerJs}" type="text/javascript"></script>
     <script src="${appJs}" type="text/javascript"></script>
     <script src="${validateJs}" type="text/javascript"></script>
+    <script src="${customJs}" type="text/javascript"></script>
 
     <%--<jsp:useBean id="userProfile" class="com.intelligrape.TagLibBean.UserProfile" scope="request"/>--%>
 
     <%-- Links varaibles   --%>
     <c:set value="/topic/create" var="createTopicLink"/>
-    <c:set value="/user/dashboard" var="dashboard"/>
+    <c:set value="/user/ajaxDashboard" var="ajaxDashboard"/>
     <c:set value="/topic/ajaxList" var="listTopicUrl"/>
     <c:set value="/subscription/subscribeTopic" var="subscribeTopic"/>
     <c:set value="/subscription/unSubscribeTopic" var="unSubscribeTopic"/>
@@ -66,39 +70,29 @@
         });
 
         function fetchLoggedUserTopicList() {
-            jQuery.ajax({
-                url: "${listTopicUrl}"
-            }).done(function (data) {
-                jQuery("#" + "${rightPanel}").html(data);
-            }).fail(function () {
-                console.log("Ajax Failed");
-            });
+            ajaxTemplate("${listTopicUrl}", "${rightPanel}");
         }
 
         function fetchUnSubscribeTopic() {
-            jQuery.ajax({
-                url: "${unSubscribeTopic}"
-            }).done(function (data) {
-                jQuery("#" + "${rightPanel}").html(data);
-            }).fail(function () {
-                console.log("Ajax Failed");
-            });
+            ajaxTemplate("${unSubscribeTopic}", "${rightPanel}");
         }
 
         function fetchSubscribeTopic() {
-            jQuery.ajax({
-                url: "${subscribeTopic}"
-            }).done(function (data) {
-                jQuery("#" + "${rightPanel}").html(data);
-            }).fail(function () {
-                console.log("Ajax Failed");
-            });
+            ajaxTemplate("${subscribeTopic}", "${rightPanel}");
+        }
+        function createTopic() {
+            ajaxTemplate("${createTopicLink}", "${rightPanel}");
+        }
+        function intializeDashboard() {
+            ajaxTemplate("${ajaxDashboard}", "${rightPanel}");
         }
 
         function bindAjaxWithLink() {
             jQuery("#listTopic").on('click', fetchLoggedUserTopicList);
             jQuery("#subscribeTopic").on('click', fetchSubscribeTopic);
             jQuery("#unSubscribeTopic").on('click', fetchUnSubscribeTopic);
+            jQuery("#createTopic").on('click', createTopic);
+            jQuery("[name='dashboard']").on('click', intializeDashboard);
         }
     </script>
 
@@ -107,7 +101,7 @@
 <body class="skin-black">
 <!-- header logo: style can be found in header.less -->
 <header class="header">
-    <a href="${dashboard}" class="logo">
+    <a href="javascript:void (0);" class="logo" name="dashboard">
         Link Sharing
     </a>
     <!-- Header Navbar: style can be found in header.less -->
@@ -179,7 +173,7 @@
             </div>
             <ul class="sidebar-menu">
                 <li class="active">
-                    <a href="${dashboard}">
+                    <a href="javascript:void (0);" name="dashboard">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                     </a>
                 </li>
@@ -190,7 +184,8 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="${createTopicLink}"><i class="fa fa-angle-double-right"></i> Create Topic </a></li>
+                        <li><a href="javascript:void (0);" id="createTopic"><i class="fa fa-angle-double-right"></i>
+                            Create Topic </a></li>
                         <li><a href="javascript:void (0);" id="listTopic"><i class="fa fa-angle-double-right"></i> List
                             Topic </a></li>
                         <li><a href=""><i class="fa fa-angle-double-right"></i> Search Topic</a></li>
@@ -208,7 +203,8 @@
                         <li><a href="javascript:void (0);" id="unSubscribeTopic"><i
                                 class="fa fa-angle-double-right"></i>
                             Un Subscribed Topic </a></li>
-                        <li><a href="javascript:void(0);" id="subscribeTopic"><i class="fa fa-angle-double-right"></i> Subscribed Topic
+                        <li><a href="javascript:void(0);" id="subscribeTopic"><i class="fa fa-angle-double-right"></i>
+                            Subscribed Topic
                         </a></li>
                     </ul>
                 </li>

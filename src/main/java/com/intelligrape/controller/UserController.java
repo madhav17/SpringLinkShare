@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -50,9 +51,19 @@ public class UserController {
         httpSession.setAttribute("username", currentUser.getFullName());
         httpSession.setAttribute("profileUrl", "/user/update?id=" + currentUser.getId());
         model.addAttribute("topics", topicList);
-        model.addAttribute("user", currentUser);
         return "user/dashboard";
     }
+
+    @RequestMapping(value = "/ajaxDashboard")
+    public ModelAndView ajaxDashboard(HttpSession httpSession){
+        ModelAndView modelAndView = new ModelAndView();
+        User user = (User)httpSession.getAttribute("currentUser");
+        List<Topic> topicList = userService.findAllUserTopics(user);
+        modelAndView.addObject("topics",topicList);
+        modelAndView.setViewName("user/ajaxDashboard");
+        return modelAndView;
+    }
+
 
     @RequestMapping(value = "/updateUser")
     public String updateUser(HttpServletRequest request, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("password") String password, @RequestParam("id") int id) {

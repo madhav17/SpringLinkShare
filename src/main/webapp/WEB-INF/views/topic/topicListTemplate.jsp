@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:set var="topics" value="${topicList != null ?topicList : requestScope.topicList }" scope="request"/>
 <section class="panel">
     <header class="panel-heading">Topic List</header>
     <div class="panel-body">
@@ -12,7 +13,7 @@
                 <th><b>Link</b></th>
                 <th><b>Action</b></th>
             </tr>
-            <c:forEach var="topic" items="${topicList}">
+            <c:forEach var="topic" items="${topics}">
                 <tr class="active">
                     <td>${topic.title}</td>
                     <td>${topic.link}</td>
