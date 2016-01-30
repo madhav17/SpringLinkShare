@@ -57,6 +57,8 @@
         </excludes>
         <!--Ajax URL is excluded-->
         <pattern>/topic/ajaxList</pattern>
+        <pattern>/subscription/subscribeTopic</pattern>
+        <pattern>/subscription/unSubscribeTopic</pattern>
     </decorator>
 
 </decorators>

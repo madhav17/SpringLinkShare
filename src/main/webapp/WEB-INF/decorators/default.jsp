@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title><dec:title default="playground"/></title>
+    <title><dec:title default="Link Sharing"/></title>
 
 
     <%--global css goes here...--%>
@@ -45,6 +45,9 @@
     <c:set value="/topic/create" var="createTopicLink"/>
     <c:set value="/user/dashboard" var="dashboard"/>
     <c:set value="/topic/ajaxList" var="listTopicUrl"/>
+    <c:set value="/subscription/subscribeTopic" var="subscribeTopic"/>
+    <c:set value="/subscription/unSubscribeTopic" var="unSubscribeTopic"/>
+    <c:set value="right-side-panel" var="rightPanel"/>
 
 
     <script type="text/javascript">
@@ -59,20 +62,44 @@
                 jQuery("#ajax_spinner").hide();
             });
 
-            jQuery("#listTopic").on('click', fetchLoggedUserTopicList);
+            bindAjaxWithLink();
         });
 
         function fetchLoggedUserTopicList() {
             jQuery.ajax({
                 url: "${listTopicUrl}"
             }).done(function (data) {
-                jQuery("#right-side-panel").html(data);
+                jQuery("#" + "${rightPanel}").html(data);
             }).fail(function () {
                 console.log("Ajax Failed");
             });
         }
 
+        function fetchUnSubscribeTopic() {
+            jQuery.ajax({
+                url: "${unSubscribeTopic}"
+            }).done(function (data) {
+                jQuery("#" + "${rightPanel}").html(data);
+            }).fail(function () {
+                console.log("Ajax Failed");
+            });
+        }
 
+        function fetchSubscribeTopic() {
+            jQuery.ajax({
+                url: "${subscribeTopic}"
+            }).done(function (data) {
+                jQuery("#" + "${rightPanel}").html(data);
+            }).fail(function () {
+                console.log("Ajax Failed");
+            });
+        }
+
+        function bindAjaxWithLink() {
+            jQuery("#listTopic").on('click', fetchLoggedUserTopicList);
+            jQuery("#subscribeTopic").on('click', fetchSubscribeTopic);
+            jQuery("#unSubscribeTopic").on('click', fetchUnSubscribeTopic);
+        }
     </script>
 
     <dec:head/>
@@ -178,9 +205,11 @@
                     </a>
 
                     <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-angle-double-right"></i> Subscribe
-                            Topic </a></li>
-                        <li><a href=""><i class="fa fa-angle-double-right"></i> Subscribed Topic </a></li>
+                        <li><a href="javascript:void (0);" id="unSubscribeTopic"><i
+                                class="fa fa-angle-double-right"></i>
+                            Un Subscribed Topic </a></li>
+                        <li><a href="javascript:void(0);" id="subscribeTopic"><i class="fa fa-angle-double-right"></i> Subscribed Topic
+                        </a></li>
                     </ul>
                 </li>
             </ul>

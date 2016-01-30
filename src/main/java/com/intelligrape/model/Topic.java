@@ -10,15 +10,15 @@ import javax.persistence.Table;
 import java.util.Set;
 
 @Entity
-@Table(name="topic")
+@Table(name = "topic")
 public class Topic {
 
-    public Topic(){
+    public Topic() {
 
     }
 
-    public Topic(User user,String title,String link){
-        this.user  = user;
+    public Topic(User user, String title, String link) {
+        this.user = user;
         this.title = title;
         this.link = link;
     }
@@ -29,26 +29,26 @@ public class Topic {
 
 
     @NotEmpty
-    @Column(name = "title",nullable = false)
+    @Column(name = "title", nullable = false)
     public String title;
 
     @NotEmpty
-    @Column(name = "link",nullable = false)
+    @Column(name = "link", nullable = false)
     public String link;
 
     @OneToOne
-    @JoinColumn(name="user_id",nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @Cascade(CascadeType.ALL)
     public User user;
 
     @OneToMany(mappedBy = "topic") // Subscription model has topic
     public Set<Subscription> subscriptionSet;
 
-    public String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    public int getId(){
+    public int getId() {
         return id;
     }
 
@@ -60,6 +60,10 @@ public class Topic {
         this.link = link;
     }
 
+    @Override
+    public String toString() {
+        return "topic : " + id;
+    }
 }
 
 /*
