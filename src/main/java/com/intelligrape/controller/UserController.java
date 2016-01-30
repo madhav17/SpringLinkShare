@@ -3,6 +3,7 @@ package com.intelligrape.controller;
 import com.intelligrape.model.Topic;
 import com.intelligrape.model.User;
 import com.intelligrape.service.UserService;
+import com.intelligrape.util.CO.UserCO;
 import com.intelligrape.util.enums.Role;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,23 +28,17 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/list")
-    public String listUser(HttpServletRequest request) {
-        return "user/list";
-    }
-
-
     @RequestMapping(value = "/register")
-    public String register(HttpServletRequest request, @RequestParam(value = "firstName", required = false) String firstName, @RequestParam(value = "lastName", required = false) String lastName, @RequestParam(value = "username", required = false) String username, @RequestParam(value = "password", required = false) String password) {
-        if (firstName != null && lastName != null && username != null && password != null) {
-            User currentUser = new User(firstName, lastName, username, password, true);
+    public String register(UserCO userCO) {
+        if (userCO.firstName != null && userCO.lastName != null && userCO.username != null && userCO.password != null) {
+            User currentUser = new User(userCO);
             userService.saveUserAndRole(currentUser, Role.ROLE_USER.name());
         }
         return "redirect:/";
     }
 
     @RequestMapping(value = "/dashboard")
-    public String dashboard(HttpServletRequest request, HttpSession httpSession, Model model) {
+    public String dashboard(HttpSession httpSession, Model model) {
 
         User currentUser = userService.getLoggedInUser();
         List<Topic> topicList = userService.findAllUserTopics(currentUser);
@@ -66,15 +61,15 @@ public class UserController {
 
 
     @RequestMapping(value = "/updateUser")
-    public String updateUser(HttpServletRequest request, @RequestParam("firstName") String firstName, @RequestParam("lastName") String lastName, @RequestParam("password") String password, @RequestParam("id") int id) {
-        User user = userService.getLoggedInUser();
-        userService.updateUser(user, firstName, lastName, password);
+    public String updateUser(HttpSession httpSession,UserCO userCO) {
+        User user = (User)httpSession.getAttribute("currentUser");
+        userService.updateUser(user, userCO.firstName, userCO.lastName, userCO.password);
         return "redirect:/user/dashboard";
     }
 
     @RequestMapping(value = "/update")
-    public String update(@RequestParam("id") int id, Model model) {
-        User user = userService.getLoggedInUser();
+    public String update(HttpSession httpSession, Model model) {
+        User user = (User) httpSession.getAttribute("currentUser");
         model.addAttribute("user", user);
         return "user/update";
     }

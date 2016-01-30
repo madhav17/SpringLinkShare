@@ -1,5 +1,6 @@
 package com.intelligrape.model;
 
+import com.intelligrape.util.CO.UserCO;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -19,6 +20,14 @@ public class User implements Serializable {
         this.username = username;
         this.password = password;
         this.enabled = enabled;
+    }
+
+    public User(UserCO userCO){
+        firstName = userCO.firstName;
+        lastName = userCO.lastName;
+        username = userCO.username;
+        password = userCO.password;
+        enabled = userCO.getEnabled();
     }
 
     public User() {
