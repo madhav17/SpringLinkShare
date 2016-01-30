@@ -4,6 +4,7 @@ import com.intelligrape.model.Topic;
 import com.intelligrape.model.User;
 import com.intelligrape.service.TopicService;
 import com.intelligrape.service.UserService;
+import com.intelligrape.util.CO.TopicCO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -40,27 +41,28 @@ public class TopicController {
         return modelAndView;
     }
 
+//    @RequestMapping(value = "/save")
     @RequestMapping(value = "/save")
-    public ModelAndView save(HttpServletRequest request, @RequestParam("title") String title, @RequestParam("link") String link, HttpSession httpSession) {
+    public ModelAndView save(TopicCO topicCO, HttpSession httpSession) {
         ModelAndView modelAndView = new ModelAndView();
-        User user = (User) httpSession.getAttribute("currentUser");
-        Topic topic = new Topic(user, title, link);
-        topicService.saveTopicCreateSubscription(topic, user);
+        topicCO.setUser((User) httpSession.getAttribute("currentUser"));
+        Topic topic = new Topic(topicCO);
+        topicService.saveTopicCreateSubscription(topic);
         modelAndView.addObject("msg", ((topic != null) ? "Topic Created" : "Cannot Create Topic"));
         modelAndView.setViewName("topic/create");
         return modelAndView;
     }
 
     @RequestMapping(value = "/updateTopic")
-    public String updateTopic(HttpServletRequest request, @RequestParam("title") String title, @RequestParam("id") int id, @RequestParam("link") String link) {
-        Topic topic = topicService.findById(id);
-        topicService.updateTopic(topic, title, link);
+    public String updateTopic(TopicCO topicCO) {
+        Topic topic = topicService.findById(topicCO.id);
+        topicService.updateTopic(topic, topicCO.title, topicCO.link);
         return "redirect:/user/dashboard";
     }
 
     @RequestMapping(value = "/update")
-    public String update(@RequestParam("id") int id, Model model) {
-        Topic topic = topicService.findById(id);
+    public String update(TopicCO topicCO, Model model) {
+        Topic topic = topicService.findById(topicCO.id);
         model.addAttribute("topic", topic);
         return "topic/update";
     }

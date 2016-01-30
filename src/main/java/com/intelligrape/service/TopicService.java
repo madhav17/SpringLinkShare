@@ -12,7 +12,7 @@ public interface TopicService {
 
     Topic saveTopic(Topic topic);
 
-    void saveTopicCreateSubscription(Topic topic,User user);
+    void saveTopicCreateSubscription(Topic topic);
 
     void updateTopic(Topic topic, String title,String link);
 

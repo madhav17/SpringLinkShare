@@ -33,9 +33,9 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Transactional
-    public void saveTopicCreateSubscription(Topic topic,User user){
-        saveTopic(topic);
-        Subscription subscription = new Subscription(user,topic,new Date());
+    public void saveTopicCreateSubscription(Topic topic){
+        topic = saveTopic(topic);
+        Subscription subscription = new Subscription(topic.user,topic,new Date());
         subscriptionDao.saveSubscription(subscription);
     }
 

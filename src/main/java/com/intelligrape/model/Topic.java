@@ -1,5 +1,6 @@
 package com.intelligrape.model;
 
+import com.intelligrape.util.CO.TopicCO;
 import org.hibernate.annotations.*;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -21,6 +22,12 @@ public class Topic {
         this.user = user;
         this.title = title;
         this.link = link;
+    }
+
+    public Topic(TopicCO topicCO) {
+        user = topicCO.user;
+        title = topicCO.title;
+        link = topicCO.link;
     }
 
     @Id
