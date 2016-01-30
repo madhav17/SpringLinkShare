@@ -10,9 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller("topicController")
 @RequestMapping("/topic")
@@ -56,5 +58,15 @@ public class TopicController {
         Topic topic = topicService.findById(id);
         model.addAttribute("topic",topic);
         return "topic/update";
+    }
+
+    @RequestMapping(value = "/ajaxList")
+    public ModelAndView list(HttpSession httpSession){
+        User user = (User)httpSession.getAttribute("currentUser");
+        ModelAndView modelAndView = new ModelAndView();
+        List<Topic> topicList = userService.findAllUserTopics(user);
+        modelAndView.addObject("topicList", topicList);
+        modelAndView.setViewName("topic/topicListTemplate");
+        return modelAndView;
     }
 }

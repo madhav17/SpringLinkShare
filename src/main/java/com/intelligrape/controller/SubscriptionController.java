@@ -38,7 +38,7 @@ public class SubscriptionController {
         subscriptionService.createSubscription(currentUser, topic, new Date());
         List<Topic> topicList = userService.findAllUserTopics(currentUser);
         modelAndView.addObject("topicList", topicList);
-        modelAndView.setViewName("subscription/topicList");
+        modelAndView.setViewName("topic/topicListTemplate");
         return modelAndView;
     }
 

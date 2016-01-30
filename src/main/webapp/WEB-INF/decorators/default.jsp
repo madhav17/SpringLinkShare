@@ -44,6 +44,7 @@
     <%-- Links varaibles   --%>
     <c:set value="/topic/create" var="createTopicLink"/>
     <c:set value="/user/dashboard" var="dashboard"/>
+    <c:set value="/topic/ajaxList" var="listTopicUrl"/>
 
 
     <script type="text/javascript">
@@ -57,7 +58,19 @@
             jQuery(document).ajaxStop(function () {
                 jQuery("#ajax_spinner").hide();
             });
+
+            jQuery("#listTopic").on('click', fetchLoggedUserTopicList);
         });
+
+        function fetchLoggedUserTopicList() {
+            jQuery.ajax({
+                url: "${listTopicUrl}"
+            }).done(function (data) {
+                jQuery("#right-side-panel").html(data);
+            }).fail(function () {
+                console.log("Ajax Failed");
+            });
+        }
 
 
     </script>
@@ -151,7 +164,8 @@
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="${createTopicLink}"><i class="fa fa-angle-double-right"></i> Create Topic </a></li>
-                        <li><a href=""><i class="fa fa-angle-double-right"></i> List Topic </a></li>
+                        <li><a href="javascript:void (0);" id="listTopic"><i class="fa fa-angle-double-right"></i> List
+                            Topic </a></li>
                         <li><a href=""><i class="fa fa-angle-double-right"></i> Search Topic</a></li>
                     </ul>
                 </li>
@@ -178,7 +192,7 @@
     </aside>
     <aside class="right-side">
 
-        <section class="content">
+        <section class="content" id="right-side-panel">
             <dec:body/>
 
             <!-- row end -->

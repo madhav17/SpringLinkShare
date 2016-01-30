@@ -37,4 +37,26 @@
         <pattern>/login/signUp</pattern>
     </decorator>
 
+
+    <!--defiing multiple decoraters-->
+    <!-- For Ajax pages -->
+    <decorator name="ajax" page="ajax.jsp">
+        <excludes>
+            <pattern>/nodecorate/*</pattern>
+            <pattern>/styles/*</pattern>
+            <pattern>/assets/*</pattern>
+            <pattern>/scripts/*</pattern>
+            <pattern>/images/*</pattern>
+            <!--<pattern>/index.html</pattern>-->
+            <pattern>/META-INF/*</pattern>
+            <pattern>/css/*</pattern>
+            <pattern>/*.css</pattern>
+            <pattern>/rescources/fonts/*</pattern>
+            <pattern>/rescources/css/*</pattern>
+
+        </excludes>
+        <!--Ajax URL is excluded-->
+        <pattern>/topic/ajaxList</pattern>
+    </decorator>
+
 </decorators>
