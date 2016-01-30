@@ -25,6 +25,7 @@
     <spring:url value="/resources/css/style.css" var="styleCSS"/>
     <spring:url value="/resources/css/ionicons.min.css" var="ioniconsCSS"/>
 
+    <spring:url value="/resources/images/ajaxLoader1.gif" var="ajaxImage"/>
 
     <style type="text/css">@import "${bootstrapCSS}"; </style>
     <style type="text/css">@import "${fontCSS}"; </style>
@@ -41,8 +42,25 @@
     <%--<jsp:useBean id="userProfile" class="com.intelligrape.TagLibBean.UserProfile" scope="request"/>--%>
 
     <%-- Links varaibles   --%>
-    <c:set value="/topic/create" var="createTopicLink" />
-    <c:set value="/user/dashboard" var="dashboard" />
+    <c:set value="/topic/create" var="createTopicLink"/>
+    <c:set value="/user/dashboard" var="dashboard"/>
+
+
+    <script type="text/javascript">
+
+
+        jQuery(document).ready(function () {
+            jQuery(document).ajaxStart(function () {
+                jQuery("#ajax_spinner").show();
+            });
+
+            jQuery(document).ajaxStop(function () {
+                jQuery("#ajax_spinner").hide();
+            });
+        });
+
+
+    </script>
 
     <dec:head/>
 </head>
@@ -68,7 +86,7 @@
                         <%--<span><g:UserName/><i class="caret"></i></span>--%>
                         <!-- Setting value in session when user get Logged in-->
                         <i class="fa fa-user"></i>
-                        <span><%= (String)session.getAttribute("username")%><i class="caret"></i></span>
+                        <span><%= (String) session.getAttribute("username")%><i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                         <li class="dropdown-header text-center">Account</li>
@@ -78,7 +96,7 @@
                         <li>
                             <%--<a href=<jsp:getProperty name="userProfile" property="url"/>>--%>
                             <%--<a href=<p:Profile/>>--%>
-                            <a href=<%= (String)session.getAttribute("profileUrl")%>>
+                            <a href=<%= (String) session.getAttribute("profileUrl")%>>
 
                                 Profile
                             </a>
@@ -113,7 +131,7 @@
                     <p>Hello,
                         <%--<jsp:getProperty name="userProfile" property="fullName"/>--%>
                         <%--<g:UserName/>--%>
-                        <%= (String)session.getAttribute("username")%>
+                        <%= (String) session.getAttribute("username")%>
                     </p>
 
 
@@ -146,22 +164,26 @@
                     </a>
 
                     <ul class="treeview-menu">
-                        <li><a href=""><i class="fa fa-angle-double-right"></i> Subscribe Topic </a></li>
+                        <li><a href=""><i class="fa fa-angle-double-right"></i> Subscribe
+                            Topic </a></li>
                         <li><a href=""><i class="fa fa-angle-double-right"></i> Subscribed Topic </a></li>
                     </ul>
                 </li>
             </ul>
         </section>
         <!-- /.sidebar -->
+        <!-- Spinner span -->
+        <span id="ajax_spinner" style="margin-left: 18%;display: none;"><img
+                src="${ajaxImage}"/></span>
     </aside>
-
     <aside class="right-side">
 
         <section class="content">
-        <dec:body/>
+            <dec:body/>
 
-        <!-- row end -->
-        </section><!-- /.content -->
+            <!-- row end -->
+        </section>
+        <!-- /.content -->
         <%--<div class="footer-main">--%>
         <%--Link Sharing--%>
         <%--</div>--%>
