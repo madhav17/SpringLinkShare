@@ -1,5 +1,6 @@
 package com.intelligrape.model;
 
+import com.intelligrape.util.CO.SubscriptionCO;
 import org.hibernate.annotations.*;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -22,6 +23,12 @@ public class Subscription {
         this.user = user;
         this.topic = topic;
         this.dateCreated = dateCreated;
+    }
+
+    public Subscription(SubscriptionCO subscriptionCO){
+        user = subscriptionCO.user;
+        topic = subscriptionCO.topic;
+        dateCreated = subscriptionCO.dateCreated;
     }
 
     @Id
