@@ -60,7 +60,9 @@
         <pattern>/topic/create</pattern>
         <pattern>/topic/save</pattern>
         <pattern>/subscription/subscribeTopicList</pattern>
+        <pattern>/subscription/subscribeTopic</pattern>
         <pattern>/subscription/unSubscribeTopicList</pattern>
+        <pattern>/subscription/unSubscribeTopic</pattern>
         <pattern>/user/ajaxDashboard</pattern>
     </decorator>
 

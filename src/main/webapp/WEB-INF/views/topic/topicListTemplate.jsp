@@ -3,6 +3,39 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<head>
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function () {
+            jQuery("[name='action']").on('click', subscribeOrUnSubcribeTopic);
+        });
+
+        function subscribeOrUnSubcribeTopic() {
+            var type = jQuery(this).attr('data-type');
+            var topicId = jQuery(this).attr('data-value');
+            console.log(type);
+            var divId = "right-side-panel";
+            var data = {topicId: topicId};
+            type == "Subscribe" ? subscribeTopic(topicId, divId, data) : unSubscribeTopic(topicId, divId, data);
+        }
+
+        function subscribeTopic(id, divId, data) {
+            console.log("Sub");
+            var url = "/subscription/subscribeTopic";
+            ajaxTemplateForSave(url, divId, data);
+        }
+
+        function unSubscribeTopic(id, divId, data) {
+            console.log("Un");
+            var url = "/subscription/unSubscribeTopic";
+            ajaxTemplateForSave(url, divId, data);
+        }
+
+    </script>
+
+</head>
+
 <c:set var="topics" value="${topicList != null ?topicList : requestScope.topicList }" scope="request"/>
 <section class="panel">
     <header class="panel-heading">Topic List</header>
@@ -19,7 +52,8 @@
                     <td>${topic.link}</td>
                     <c:choose>
                         <c:when test="${not empty subs}">
-                            <td><a href="" class="btn btn-info">${type}</a></td>
+                            <td><a href="javascript:void (0);" class="btn btn-info" name="action" data-type="${type}"
+                                   data-value="${topic.id}">${type}</a></td>
                         </c:when>
                         <c:otherwise>
                             <td><a href="/topic/update?id=${topic.id}">Edit</a></td>

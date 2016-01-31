@@ -57,6 +57,8 @@ public class SubscriptionController {
 
     @RequestMapping(value = "/subscribeTopic")
     public  ModelAndView subscribeTopic(HttpSession httpSession, @RequestParam("topicId") int topicId){
+        System.out.println("sub");
+        System.out.println(topicId);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("topic/topicListTemplate");
         return modelAndView;
@@ -80,6 +82,8 @@ public class SubscriptionController {
 
     @RequestMapping(value = "/unSubscribeTopic")
     public ModelAndView unSubscribeTopic(HttpSession httpSession,@RequestParam("topicId") int topicId){
+        System.out.println("Un sub");
+        System.out.println(topicId);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("topic/topicListTemplate");
         return modelAndView;
