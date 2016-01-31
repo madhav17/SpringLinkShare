@@ -45,7 +45,6 @@ public class Topic {
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
-    @Cascade(CascadeType.ALL)
     public User user;
 
     @OneToMany(mappedBy = "topic") // Subscription model has topic

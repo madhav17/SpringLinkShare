@@ -37,12 +37,10 @@ public class Subscription {
 
     @ManyToOne
     @JoinColumn(name = "user_id",nullable = false)
-    @Cascade(CascadeType.ALL)
     public User user;
 
     @ManyToOne
     @JoinColumn(name = "topic_id",nullable = false)
-    @Cascade(CascadeType.ALL)
     public Topic topic;
 
     @NotNull
