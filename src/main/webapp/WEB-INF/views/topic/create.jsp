@@ -11,11 +11,34 @@
     <script type="text/javascript">
 
         jQuery(document).ready(function () {
-            jQuery("#create").on('click', createAndSaveTopic)
+            jQuery("#create").on('click', createAndSaveTopic);
+            jQuery(".formField").on('keyup', validateField);
+
+            jQuery("#createTopicForm").validate({
+                rules: {
+                    title: "required",
+                    link: {
+                        required: true,
+                        url: true
+                    }
+                },
+                messages: {
+                    title: "Please Enter the Title",
+                    link: {
+                        required: "Please Enter the URL",
+                        url: "URL must be in Proper Format"
+                    }
+                }
+            });
         });
 
         function createAndSaveTopic() {
-            ajaxTemplateForSave("${saveTopic}", "${topicDiv}", jQuery("#createTopicForm").serialize());
+            if (jQuery("#createTopicForm").valid())
+                ajaxTemplateForSave("${saveTopic}", "${topicDiv}", jQuery("#createTopicForm").serialize());
+        }
+
+        function validateField() {
+            jQuery(this).valid();
         }
 
     </script>
@@ -39,7 +62,8 @@
                             <label for="title" class="col-sm-2 control-label">Topic Title : </label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Title"
+                                <input type="text" class="form-control formField" id="title" name="title"
+                                       placeholder="Title"
                                        required="true">
                             </div>
                         </div>
@@ -47,7 +71,8 @@
                             <label for="link" class="col-sm-2 control-label">Topic Link : </label>
 
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" id="link" name="link" placeholder="Link"
+                                <input type="text" class="form-control formField" id="link" name="link"
+                                       placeholder="Link"
                                        required="true">
                             </div>
                         </div>
