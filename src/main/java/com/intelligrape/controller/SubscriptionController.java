@@ -43,8 +43,8 @@ public class SubscriptionController {
 //        return modelAndView;
 //    }
 
-    @RequestMapping(value = "/subscribeTopic")
-    public ModelAndView subscribeTopic(HttpSession httpSession) {
+    @RequestMapping(value = "/subscribeTopicList")
+    public ModelAndView subscribeTopicList(HttpSession httpSession) {
         ModelAndView modelAndView = new ModelAndView();
         User currentUser = (User) httpSession.getAttribute("currentUser");
         List<Topic> allTopics = userService.findAllUserTopics(currentUser);
@@ -53,8 +53,8 @@ public class SubscriptionController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/unSubscribeTopic")
-    public ModelAndView unSubscribeTopic(HttpSession httpSession) {
+    @RequestMapping(value = "/unSubscribeTopicList")
+    public ModelAndView unSubscribeTopicList(HttpSession httpSession) {
         ModelAndView modelAndView = new ModelAndView();
         User currentUser = (User) httpSession.getAttribute("currentUser");
         List<Topic> allTopics = topicService.findAllTopics();

@@ -49,8 +49,8 @@
     <c:set value="/topic/create" var="createTopicLink"/>
     <c:set value="/user/ajaxDashboard" var="ajaxDashboard"/>
     <c:set value="/topic/ajaxList" var="listTopicUrl"/>
-    <c:set value="/subscription/subscribeTopic" var="subscribeTopic"/>
-    <c:set value="/subscription/unSubscribeTopic" var="unSubscribeTopic"/>
+    <c:set value="/subscription/subscribeTopicList" var="subscribeTopicList"/>
+    <c:set value="/subscription/unSubscribeTopicList" var="unSubscribeTopicList"/>
     <c:set value="right-side-panel" var="rightPanel"/>
 
 
@@ -73,12 +73,12 @@
             ajaxTemplate("${listTopicUrl}", "${rightPanel}");
         }
 
-        function fetchUnSubscribeTopic() {
-            ajaxTemplate("${unSubscribeTopic}", "${rightPanel}");
+        function fetchUnSubscribeTopicList() {
+            ajaxTemplate("${unSubscribeTopicList}", "${rightPanel}");
         }
 
-        function fetchSubscribeTopic() {
-            ajaxTemplate("${subscribeTopic}", "${rightPanel}");
+        function fetchSubscribeTopicList() {
+            ajaxTemplate("${subscribeTopicList}", "${rightPanel}");
         }
         function createTopic() {
             ajaxTemplate("${createTopicLink}", "${rightPanel}");
@@ -89,8 +89,8 @@
 
         function bindAjaxWithLink() {
             jQuery("#listTopic").on('click', fetchLoggedUserTopicList);
-            jQuery("#subscribeTopic").on('click', fetchSubscribeTopic);
-            jQuery("#unSubscribeTopic").on('click', fetchUnSubscribeTopic);
+            jQuery("#subscribeTopicList").on('click', fetchSubscribeTopicList);
+            jQuery("#unSubscribeTopicList").on('click', fetchUnSubscribeTopicList);
             jQuery("#createTopic").on('click', createTopic);
             jQuery("[name='dashboard']").on('click', intializeDashboard);
         }
@@ -200,10 +200,10 @@
                     </a>
 
                     <ul class="treeview-menu">
-                        <li><a href="javascript:void (0);" id="unSubscribeTopic"><i
+                        <li><a href="javascript:void (0);" id="unSubscribeTopicList"><i
                                 class="fa fa-angle-double-right"></i>
                             Un Subscribed Topic </a></li>
-                        <li><a href="javascript:void(0);" id="subscribeTopic"><i class="fa fa-angle-double-right"></i>
+                        <li><a href="javascript:void(0);" id="subscribeTopicList"><i class="fa fa-angle-double-right"></i>
                             Subscribed Topic
                         </a></li>
                     </ul>
