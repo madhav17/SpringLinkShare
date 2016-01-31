@@ -47,19 +47,24 @@ public class SubscriptionController {
     public ModelAndView subscribeTopicList(HttpSession httpSession) {
         ModelAndView modelAndView = new ModelAndView();
         User currentUser = (User) httpSession.getAttribute("currentUser");
-        List<Topic> allTopics = userService.findAllUserTopics(currentUser);
+        List<Topic> allTopics = subscriptionService.fetchSubscribedTopics(currentUser);
         modelAndView.addObject("topicList", allTopics);
-        modelAndView.addObject("subs",true);
-        modelAndView.addObject("type","Un Subscribe");
+        modelAndView.addObject("subs", true);
+        modelAndView.addObject("type", "Un Subscribe");
         modelAndView.setViewName("topic/topicListTemplate");
         return modelAndView;
     }
 
     @RequestMapping(value = "/subscribeTopic")
-    public  ModelAndView subscribeTopic(HttpSession httpSession, @RequestParam("topicId") int topicId){
-        System.out.println("sub");
-        System.out.println(topicId);
+    public ModelAndView subscribeTopic(HttpSession httpSession, @RequestParam("topicId") int topicId) {
         ModelAndView modelAndView = new ModelAndView();
+        Topic topic = topicService.findById(topicId);
+        User user = (User) httpSession.getAttribute("currentUser");
+        subscriptionService.createSubscription(user, topic, new Date());
+        List<Topic> allTopics = subscriptionService.fetchUnSubscribedTopics(user);
+        modelAndView.addObject("topicList", allTopics);
+        modelAndView.addObject("subs", true);
+        modelAndView.addObject("type", "Subscribe");
         modelAndView.setViewName("topic/topicListTemplate");
         return modelAndView;
     }
@@ -68,23 +73,27 @@ public class SubscriptionController {
     public ModelAndView unSubscribeTopicList(HttpSession httpSession) {
         ModelAndView modelAndView = new ModelAndView();
         User currentUser = (User) httpSession.getAttribute("currentUser");
-        List<Topic> allTopics = topicService.findAllTopics();
-
+//        List<Topic> allTopics = topicService.findAllTopics();
 //    allTopics.removeAll(userService.findAllUserTopics(currentUser));
-
-        allTopics = ListUtils.removeAll(allTopics, userService.findAllUserTopics(currentUser));
+//        allTopics = ListUtils.removeAll(allTopics, userService.findAllUserTopics(currentUser));
+        List<Topic> allTopics = subscriptionService.fetchUnSubscribedTopics(currentUser);
         modelAndView.addObject("topicList", allTopics);
-        modelAndView.addObject("subs",true);
-        modelAndView.addObject("type","Subscribe");
+        modelAndView.addObject("subs", true);
+        modelAndView.addObject("type", "Subscribe");
         modelAndView.setViewName("topic/topicListTemplate");
         return modelAndView;
     }
 
     @RequestMapping(value = "/unSubscribeTopic")
-    public ModelAndView unSubscribeTopic(HttpSession httpSession,@RequestParam("topicId") int topicId){
-        System.out.println("Un sub");
-        System.out.println(topicId);
+    public ModelAndView unSubscribeTopic(HttpSession httpSession, @RequestParam("topicId") int topicId) {
         ModelAndView modelAndView = new ModelAndView();
+        Topic topic = topicService.findById(topicId);
+        User user = (User) httpSession.getAttribute("currentUser");
+        subscriptionService.deleteSubscription(user, topic);
+        List<Topic> allTopics = subscriptionService.fetchSubscribedTopics(user);
+        modelAndView.addObject("topicList", allTopics);
+        modelAndView.addObject("subs", true);
+        modelAndView.addObject("type", "Un Subscribe");
         modelAndView.setViewName("topic/topicListTemplate");
         return modelAndView;
     }

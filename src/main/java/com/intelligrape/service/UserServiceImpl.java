@@ -6,6 +6,7 @@ import com.intelligrape.model.User;
 import com.intelligrape.util.enums.Role;
 import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

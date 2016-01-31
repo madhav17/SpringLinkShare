@@ -2,6 +2,7 @@ package com.intelligrape.dao;
 
 import com.intelligrape.model.Subscription;
 import com.intelligrape.model.Topic;
+import org.hibernate.Criteria;
 
 import java.util.List;
 
@@ -16,4 +17,6 @@ public interface SubscriptionDao {
     void deleteSubscription(Subscription subscription);
 
     void deleteSubscription(int id);
+
+    Criteria fetchCriteria();
 }

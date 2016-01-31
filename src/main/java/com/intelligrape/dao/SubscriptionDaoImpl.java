@@ -32,4 +32,8 @@ public class SubscriptionDaoImpl extends AbstractDao<Integer, Subscription> impl
         delete(id);
     }
 
+    public Criteria fetchCriteria(){
+        return createEntityCriteria();
+    }
+
 }
