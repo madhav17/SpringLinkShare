@@ -10,6 +10,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
@@ -65,6 +67,28 @@ used in hibernate 3 replacement is LocalSessionFactoryBean
         dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
         dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
         return dataSource;
+    }
+
+    @Bean
+    public JavaMailSender javaMailSender(){
+        JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
+        javaMailSender.setHost("smtp.gmail.com");
+        javaMailSender.setPort(587);
+        javaMailSender.setProtocol("smtp");
+        javaMailSender.setUsername("madhav.khanna@intelligrape.com");
+        javaMailSender.setPassword("khannavahdam");
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", true);
+        props.put("mail.smtp.quitwait", false);
+        props.put("mail.smtp.socketFactory.class", javax.net.ssl.SSLServerSocketFactory.class);
+        props.put("mail.smtp.socketFactory.fallback", false);
+        props.put("mail.debug", true);
+
+        javaMailSender.setJavaMailProperties(props);
+        return javaMailSender;
+
     }
 
     private Properties hibernateProperties() {

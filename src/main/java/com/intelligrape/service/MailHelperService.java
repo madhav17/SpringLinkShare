@@ -1,54 +1,47 @@
 package com.intelligrape.service;
 
 
-import com.intelligrape.util.MailSession;
-import com.intelligrape.util.Util;
-import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.SendFailedException;
-import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+
 
 @Service("mailHelperService")
 @Transactional
 public class MailHelperService {
 
-    Logger log = Util.getLogger(this.getClass());
+
+    @Autowired
+    public JavaMailSender javaMailSender;
 
     @Async
-    void sendMailViaSMTP() {
+    public void sendMail(final String to,final String subject,final String body){
+
+        MimeMessagePreparator preparator = new MimeMessagePreparator() {
+            @Override
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+
+                mimeMessage.setRecipient(Message.RecipientType.TO,new InternetAddress(to));
+                mimeMessage.setFrom(new InternetAddress("madhav.khanna@intelligrape.com"));
+                mimeMessage.setSubject(subject);
+                mimeMessage.setText(body);
+
+            }
+        };
 
         try {
-            Message message = new MimeMessage(MailSession.getSession());
-            message.setFrom(new InternetAddress(MailSession.fetchProperty("mail.username")));
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("madhav.devil@gmail.com"));
-//            InternetAddress[] ccInternetAddresses = mailDTO.getCCInternetAddress()
-//            if (ccInternetAddresses)
-//                message.setRecipients(Message.RecipientType.CC, ccInternetAddresses);
-//            message.setSubject(mailDTO.subject);
-//            message.setContent(mailDTO.content, "text/html");
-            message.setSubject("Hello");
-            message.setContent("Hello Hi", "text/html");
-            Transport transport = MailSession.getTransport();
-            if (transport != null && message.getAllRecipients() != null) {
-                transport.sendMessage(message, message.getAllRecipients());
-                log.info("Mail Send");
-            }
-
-        } catch (SendFailedException e) {
-            log.info(e.toString());
-            log.info(e.getInvalidAddresses().toString());
-            log.info(e.getValidUnsentAddresses().toString());
+            javaMailSender.send(preparator);
+        } catch (Exception e){
             e.printStackTrace();
-        } catch (MessagingException e) {
-            log.info(e.toString());
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
 }

@@ -2,6 +2,7 @@ package com.intelligrape.controller;
 
 import com.intelligrape.model.Topic;
 import com.intelligrape.model.User;
+import com.intelligrape.service.MailHelperService;
 import com.intelligrape.service.UserService;
 import com.intelligrape.util.CO.UserCO;
 import com.intelligrape.util.enums.Role;
@@ -27,6 +28,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private MailHelperService mailHelperService;
 
     @RequestMapping(value = "/register")
     public String register(UserCO userCO) {
