@@ -78,6 +78,22 @@ public class LoginController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "/login/forgotPassword")
+    public ModelAndView forgotPassword(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("/login/forgotPassword");
+        return modelAndView;
+    }
+
+    @RequestMapping(value ="/login/sendPasswordMail")
+    public ModelAndView sendPasswordMail(@RequestParam(value = "username") String username){
+        ModelAndView modelAndView = new ModelAndView();
+        String msg = loginService.sendPassword(username);
+        modelAndView.addObject("msg",msg);
+        modelAndView.setViewName("/login/signIn");
+        return modelAndView;
+    }
+
     //for 403 access decined page
     @RequestMapping(value = "/403", method = RequestMethod.GET)
     public ModelAndView accessDenied() {

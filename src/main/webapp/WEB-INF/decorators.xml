@@ -35,6 +35,8 @@
         <pattern>/</pattern>
         <pattern>/login/signIn</pattern>
         <pattern>/login/signUp</pattern>
+        <pattern>/login/forgotPassword</pattern>
+        <pattern>/login/sendPasswordMail</pattern>
     </decorator>
 
 

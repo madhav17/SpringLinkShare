@@ -67,7 +67,7 @@
                         <a class="btn btn-link-2" href="#">
                             Google Plus
                         </a>
-                        <a class="btn btn-link-2" href="#">
+                        <a class="btn btn-link-2" href="/login/forgotPassword">
                             Forgot Password
                         </a>
                         <a class="btn btn-link-2" href="/login/signUp">
