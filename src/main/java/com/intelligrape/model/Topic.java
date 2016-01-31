@@ -48,6 +48,7 @@ public class Topic {
     public User user;
 
     @OneToMany(mappedBy = "topic") // Subscription model has topic
+    @Cascade(CascadeType.ALL)
     public Set<Subscription> subscriptionSet;
 
     public String getTitle() {

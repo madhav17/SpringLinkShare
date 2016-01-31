@@ -1,9 +1,13 @@
 package com.intelligrape.model;
 
 import com.intelligrape.util.CO.UserCO;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Set;
@@ -61,7 +65,12 @@ public class User implements Serializable {
     public Boolean enabled;
 
     @OneToMany(mappedBy = "user") // Subscription model has user
+    @Cascade(CascadeType.ALL)
     public Set<Subscription> subscriptionSet;
+
+    @OneToMany(mappedBy = "user")
+    @Cascade(CascadeType.ALL)
+    public Set<Topic> topicSet;
 
 
 //    @DateTimeFormat(pattern = "dd/MM/yyyy")
