@@ -49,6 +49,15 @@ public class SubscriptionController {
         User currentUser = (User) httpSession.getAttribute("currentUser");
         List<Topic> allTopics = userService.findAllUserTopics(currentUser);
         modelAndView.addObject("topicList", allTopics);
+        modelAndView.addObject("subs",true);
+        modelAndView.addObject("type","Un Subscribe");
+        modelAndView.setViewName("topic/topicListTemplate");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/subscribeTopic")
+    public  ModelAndView subscribeTopic(HttpSession httpSession, @RequestParam("topicId") int topicId){
+        ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("topic/topicListTemplate");
         return modelAndView;
     }
@@ -63,7 +72,17 @@ public class SubscriptionController {
 
         allTopics = ListUtils.removeAll(allTopics, userService.findAllUserTopics(currentUser));
         modelAndView.addObject("topicList", allTopics);
+        modelAndView.addObject("subs",true);
+        modelAndView.addObject("type","Subscribe");
         modelAndView.setViewName("topic/topicListTemplate");
         return modelAndView;
     }
+
+    @RequestMapping(value = "/unSubscribeTopic")
+    public ModelAndView unSubscribeTopic(HttpSession httpSession,@RequestParam("topicId") int topicId){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("topic/topicListTemplate");
+        return modelAndView;
+    }
+
 }

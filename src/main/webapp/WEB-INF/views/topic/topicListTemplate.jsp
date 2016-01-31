@@ -17,7 +17,14 @@
                 <tr class="active">
                     <td>${topic.title}</td>
                     <td>${topic.link}</td>
-                    <td><a href="/topic/update?id=${topic.id}">Edit</a></td>
+                    <c:choose>
+                        <c:when test="${not empty subs}">
+                            <td><a href="" class="btn btn-info">${type}</a></td>
+                        </c:when>
+                        <c:otherwise>
+                            <td><a href="/topic/update?id=${topic.id}">Edit</a></td>
+                        </c:otherwise>
+                    </c:choose>
                 </tr>
             </c:forEach>
         </table>
