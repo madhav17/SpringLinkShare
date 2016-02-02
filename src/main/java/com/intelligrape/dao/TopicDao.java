@@ -9,7 +9,7 @@ public interface TopicDao {
 
     Topic findById(int id);
 
-    void saveTopic(Topic employee);
+    Topic saveTopic(Topic employee);
 
     List<Topic> findAllTopic();
 }

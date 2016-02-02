@@ -16,8 +16,8 @@ public class TopicDaoImpl extends AbstractDao<Integer, Topic> implements TopicDa
         return getByKey(id);
     }
 
-    public void saveTopic(Topic topic) {
-        save(topic);
+    public Topic saveTopic(Topic topic) {
+        return (Topic)save(topic);
     }
 
     public List<Topic> findAllTopic() {

@@ -4,6 +4,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 import java.io.Serializable;
@@ -11,6 +12,8 @@ import java.lang.reflect.ParameterizedType;
 
 //PK stands for Primary key
     public class AbstractDao<PK extends Serializable, T> implements CrudRepository<T,PK> {
+//    public class AbstractDao<PK extends Serializable, T> implements JpaRepository<T,PK> {
+    // JpaRepository is alternative for CrudRepository
 
     private final Class<T> persistentClass;
 

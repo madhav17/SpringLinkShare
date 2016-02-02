@@ -37,8 +37,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void saveUser(User user) {
-        userDao.saveEmployee(user);
+    public User saveUser(User user) {
+        return userDao.saveEmployee(user);
     }
 
     @Transactional
@@ -64,8 +64,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void saveUserAndRole(User employee,String role){
-        userDao.saveEmployeeAndRole(employee,role);
+    public User saveUserAndRole(User employee,String role){
+        return userDao.saveEmployeeAndRole(employee,role);
     }
 
     public User findByUsername(String username){

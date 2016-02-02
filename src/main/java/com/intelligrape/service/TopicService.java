@@ -1,6 +1,7 @@
 package com.intelligrape.service;
 
 import com.intelligrape.model.Topic;
+import com.intelligrape.model.User;
 
 import java.util.List;
 
@@ -9,7 +10,9 @@ public interface TopicService {
 
     Topic findById(int id);
 
-    void saveTopic(Topic topic);
+    Topic saveTopic(Topic topic);
+
+    void saveTopicCreateSubscription(Topic topic,User user);
 
     void updateTopic(Topic topic, String title,String link);
 

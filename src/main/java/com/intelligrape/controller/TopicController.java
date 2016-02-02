@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller("topicController")
 @RequestMapping("/topic")
@@ -36,12 +37,10 @@ public class TopicController {
     }
 
     @RequestMapping(value = "/save")
-    public String save(HttpServletRequest request,@RequestParam("title") String title,@RequestParam("link") String link) {
-        Topic topic = new Topic();
-        topic.title = title;
-        topic.link = link;
-        topic.user = userService.getLoggedInUser();
-        topicService.saveTopic(topic);
+    public String save(HttpServletRequest request,@RequestParam("title") String title,@RequestParam("link") String link,HttpSession httpSession) {
+        User user = (User)httpSession.getAttribute("currentUser");
+        Topic topic = new Topic(user,title,link);
+        topicService.saveTopicCreateSubscription(topic,user);
         return "redirect:/user/dashboard";
     }
 

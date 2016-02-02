@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -37,7 +38,8 @@ public class Subscription {
     @Cascade(CascadeType.ALL)
     public Topic topic;
 
-    @NotEmpty
+    @NotNull
+//    @NotEmpty will not work for Date
     @Column(name = "date_created",nullable = false)
     public Date dateCreated;
 

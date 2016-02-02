@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
+import java.util.Date;
 
 @Service("utilService")
 @Transactional
@@ -31,18 +32,22 @@ public class UtilService {
     @Autowired
     public TopicService topicService;
 
+    @Autowired
+    public SubscriptionService subscriptionService;
 
     private  static final Logger log = Util.getLogger(UtilService.class);
 
-    public void bootStrapData(){
+    public void bootStrapData() {
         log.error("Bootstarp is called");
-        createUserAndTopic("Madhav", "Khanna", "madhav.khanna@tothenew.com", "1234", "First Topic",true);
-        createUserAndTopic("Maddy","Khanna","madhav.khanna@intelligrape.com","1234","Second Topic",true);
+        createUserAndTopic("Madhav", "Khanna", "madhav.khanna@tothenew.com", "1234", "First Topic", true);
+        createUserAndTopic("Maddy", "Khanna", "madhav.khanna@intelligrape.com", "1234", "Second Topic", true);
     }
-    public void createUserAndTopic(String firstName,String lastName,String username,String password,String title,Boolean enabled){
-        User user = new User(firstName,lastName,username,password,enabled);
-        userService.saveUserAndRole(user,Role.ROLE_USER.name());
-        topicService.saveTopic(new Topic(user,title,"https://www.google.co.in/"));
+
+    public void createUserAndTopic(String firstName, String lastName, String username, String password, String title, Boolean enabled) {
+        User user = new User(firstName, lastName, username, password, enabled);
+        userService.saveUserAndRole(user, Role.ROLE_USER.name());
+        Topic topic = topicService.saveTopic(new Topic(user, title, "https://www.google.co.in/"));
+        subscriptionService.createSubscription(user,topic,new Date());
     }
 
 }

@@ -29,14 +29,15 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
         return getByKey(id);
     }
 
-    public void saveEmployee(User user) {
-        getSession().save(user);
+    public User saveEmployee(User user) {
+        return (User) save(user);
     }
 
     @Transactional
-    public void saveEmployeeAndRole(User employee, String role) {
-        saveEmployee(employee);
+    public User saveEmployeeAndRole(User employee, String role) {
+        User user = saveEmployee(employee);
         getSession().save(new UserRole(employee, role));
+        return user;
     }
 
     public List<User> findAllUser() {

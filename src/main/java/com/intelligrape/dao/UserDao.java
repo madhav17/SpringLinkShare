@@ -9,9 +9,9 @@ public interface UserDao {
 
     User findById(int id);
 
-    void saveEmployee(User employee);
+    User saveEmployee(User employee);
 
-    void saveEmployeeAndRole(User employee,String role);
+    User saveEmployeeAndRole(User employee,String role);
 
     List<User> findAllUser();
 }

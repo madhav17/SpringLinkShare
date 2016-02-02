@@ -11,9 +11,9 @@ public interface UserService {
 
     User findById(int id);
 
-    void saveUser(User employee);
+    User saveUser(User employee);
 
-    void saveUserAndRole(User employee,String role);
+    User saveUserAndRole(User employee,String role);
 
     void updateUser(User employee, String firstName, String lastName, String password);
 
