@@ -15,7 +15,7 @@ public interface UserService {
 
     User saveUserAndRole(User employee,String role);
 
-    void updateUser(User employee, String firstName, String lastName, String password);
+    User updateUser(User employee, String firstName, String lastName, String password);
 
     List<User> findAllUsers();
 

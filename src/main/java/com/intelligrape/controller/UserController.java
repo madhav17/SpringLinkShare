@@ -65,10 +65,23 @@ public class UserController {
 
 
     @RequestMapping(value = "/updateUser")
-    public String updateUser(HttpSession httpSession,UserCO userCO) {
+    public ModelAndView updateUser(HttpSession httpSession,UserCO userCO) {
+        ModelAndView modelAndView = new ModelAndView();
         User user = (User)httpSession.getAttribute("currentUser");
-        userService.updateUser(user, userCO.firstName, userCO.lastName, userCO.password);
-        return "redirect:/user/dashboard";
+        user = userService.updateUser(user, userCO.firstName, userCO.lastName, userCO.password);
+        List<Topic> topicList = userService.findAllUserTopics(user);
+
+        // it is updated so that update value will be reflected/shared through out the application
+
+        modelAndView.addObject("topics", topicList);
+        modelAndView.addObject("userNewFullName", user.getFullName()); // to explicitly user new Name in jsp
+        modelAndView.setViewName("user/dashboard");
+
+        httpSession.setAttribute("currentUser", user);
+        httpSession.setAttribute("username", user.getFullName());
+        httpSession.setAttribute("profileUrl", "/user/update?id=" + user.getId());
+
+        return modelAndView;
     }
 
     @RequestMapping(value = "/update")

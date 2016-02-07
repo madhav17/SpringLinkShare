@@ -66,6 +66,8 @@
         <pattern>/subscription/unSubscribeTopicList</pattern>
         <pattern>/subscription/unSubscribeTopic</pattern>
         <pattern>/user/ajaxDashboard</pattern>
+        <pattern>/user/update</pattern>
+        <pattern>/user/updateUser</pattern>
     </decorator>
 
 </decorators>

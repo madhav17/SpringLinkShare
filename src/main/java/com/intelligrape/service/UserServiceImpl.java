@@ -43,14 +43,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public void updateUser(User user, String firstName, String lastName, String password) {
+    public User updateUser(User user, String firstName, String lastName, String password) {
         User entity = userDao.findById(user.id);
         if (entity != null) {
             entity.firstName = firstName;
             entity.lastName = lastName;
             entity.password = password;
-            userDao.saveEmployee(entity);
+            entity = userDao.saveEmployee(entity);
         }
+        return entity;
     }
 
     public List<User> findAllUsers() {

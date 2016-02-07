@@ -1,19 +1,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<html>
+
 <head>
-    <title></title>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery("#updateUser").on('click',updateUserDetail);
+        });
+
+        function updateUserDetail(){
+            var userDetails = jQuery("#userInfoForm").serialize();
+            ajaxTemplateForSave("/user/updateUser","right-side-panel",userDetails)
+        }
+    </script>
 </head>
-<body>
 
 <div class="row">
     <div class="col-md-12">
         <section class="panel">
-            <header class="panel-heading">Topic List</header>
+            <header class="panel-heading">Update Profile</header>
             <div class="panel-body">
 
-                <form:form method="post" action="/user/updateUser" cssClass="form-horizontal">
+                <form method="post" class="form-horizontal" id="userInfoForm">
                     <input type="hidden" name="id" value="${user.id}">
 
                     <div class="form-group">
@@ -44,13 +52,12 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Update Info</button>
+                            <button type="button" class="btn btn-default" id="updateUser">Update Info</button>
                         </div>
                     </div>
 
-                </form:form>
+                </form>
             </div>
         </section>
     </div>
-</body>
-</html>
+</div>

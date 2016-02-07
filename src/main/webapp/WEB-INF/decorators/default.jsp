@@ -51,6 +51,7 @@
     <c:set value="/topic/ajaxList" var="listTopicUrl"/>
     <c:set value="/subscription/subscribeTopicList" var="subscribeTopicList"/>
     <c:set value="/subscription/unSubscribeTopicList" var="unSubscribeTopicList"/>
+    <c:set value="/user/update" var="updateProfile"/>
     <c:set value="right-side-panel" var="rightPanel"/>
 
 
@@ -87,12 +88,17 @@
             ajaxTemplate("${ajaxDashboard}", "${rightPanel}");
         }
 
+        function updateUserProfile(){
+            ajaxTemplate("${updateProfile}","${rightPanel}");
+        }
+
         function bindAjaxWithLink() {
             jQuery("#listTopic").on('click', fetchLoggedUserTopicList);
             jQuery("#subscribeTopicList").on('click', fetchSubscribeTopicList);
             jQuery("#unSubscribeTopicList").on('click', fetchUnSubscribeTopicList);
             jQuery("#createTopic").on('click', createTopic);
             jQuery("[name='dashboard']").on('click', intializeDashboard);
+            jQuery("#profile").on('click',updateUserProfile);
         }
     </script>
 
@@ -120,7 +126,7 @@
                         <%--<span><g:UserName/><i class="caret"></i></span>--%>
                         <!-- Setting value in session when user get Logged in-->
                         <i class="fa fa-user"></i>
-                        <span><%= (String) session.getAttribute("username")%><i class="caret"></i></span>
+                        <span><span id="userName"><%= (String) session.getAttribute("username")%></span><i class="caret"></i></span>
                     </a>
                     <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
                         <li class="dropdown-header text-center">Account</li>
@@ -130,7 +136,10 @@
                         <li>
                             <%--<a href=<jsp:getProperty name="userProfile" property="url"/>>--%>
                             <%--<a href=<p:Profile/>>--%>
-                            <a href=<%= (String) session.getAttribute("profileUrl")%>>
+
+
+                            <%--<a href=<%= (String) session.getAttribute("profileUrl")%>>--%>
+                            <a href="javascript:void (0);" id="profile">
 
                                 Profile
                             </a>
@@ -188,7 +197,7 @@
                             Create Topic </a></li>
                         <li><a href="javascript:void (0);" id="listTopic"><i class="fa fa-angle-double-right"></i> List
                             Topic </a></li>
-                        <li><a href=""><i class="fa fa-angle-double-right"></i> Search Topic</a></li>
+                        <%--<li><a href=""><i class="fa fa-angle-double-right"></i> Search Topic</a></li>--%>
                     </ul>
                 </li>
 

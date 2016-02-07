@@ -5,6 +5,18 @@
 <html>
 <head>
     <title></title>
+    <c:set value="${userNewFullName}" var="newUserName" scope="request"/>
+    <script type="text/javascript">
+
+        jQuery(document).ready(function () {
+
+            <c:if test="${not empty newUserName}">
+                    console.log("${newUserName}");
+                    jQuery("#userName").html("${newUserName}");
+            </c:if>
+        });
+
+    </script>
 </head>
 <body>
 <div class="row">
