@@ -37,6 +37,7 @@
         <pattern>/login/signUp</pattern>
         <pattern>/login/forgotPassword</pattern>
         <pattern>/login/sendPasswordMail</pattern>
+        <pattern>/403</pattern>
     </decorator>
 
 
