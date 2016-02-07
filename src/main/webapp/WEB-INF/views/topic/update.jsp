@@ -4,6 +4,19 @@
 <html>
 <head>
     <title></title>
+
+    <script type="text/javascript">
+
+        jQuery(document).ready(function(){
+            jQuery("#updateTopicButton").on('click',updateTopicDetail);
+        });
+
+        function updateTopicDetail(){
+            var data = jQuery("#updateTopicForm").serialize();
+            ajaxTemplateForSave("/topic/updateTopic","right-side-panel",data);
+        }
+
+    </script>
 </head>
 <body>
 <div class="row">
@@ -11,7 +24,7 @@
         <section class="panel">
             <header class="panel-heading">Update Topic</header>
             <div class="panel-body">
-                <form:form method="post" action="/topic/updateTopic" cssClass="form-horizontal">
+                <form method="post" class="form-horizontal" id="updateTopicForm">
                     <input type="hidden" name="id" value="${topic.id}">
 
                     <div class="form-group">
@@ -34,10 +47,10 @@
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default">Update Topic</button>
+                            <button type="button" class="btn btn-default" id="updateTopicButton">Update Topic</button>
                         </div>
                     </div>
-                </form:form>
+                </form>
             </div>
         </section>
     </div>

@@ -68,6 +68,8 @@
         <pattern>/user/ajaxDashboard</pattern>
         <pattern>/user/update</pattern>
         <pattern>/user/updateUser</pattern>
+        <pattern>/topic/update</pattern>
+        <pattern>/topic/updateTopic</pattern>
     </decorator>
 
 </decorators>

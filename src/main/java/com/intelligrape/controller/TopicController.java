@@ -29,10 +29,6 @@ public class TopicController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/list")
-    public String listTopic() {
-        return "topic/list";
-    }
 
     @RequestMapping(value = "/create")
     public ModelAndView create() {
@@ -54,10 +50,16 @@ public class TopicController {
     }
 
     @RequestMapping(value = "/updateTopic")
-    public String updateTopic(TopicCO topicCO) {
+    public ModelAndView updateTopic(TopicCO topicCO,HttpSession httpSession) {
         Topic topic = topicService.findById(topicCO.id);
         topicService.updateTopic(topic, topicCO.title, topicCO.link);
-        return "redirect:/user/dashboard";
+        User user = (User) httpSession.getAttribute("currentUser");
+        ModelAndView modelAndView = new ModelAndView();
+        List<Topic> topicList = userService.findAllUserTopics(user);
+        modelAndView.addObject("topicList", topicList);
+        modelAndView.addObject("msg", "Topic Updated");
+        modelAndView.setViewName("topic/topicListTemplate");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/update")

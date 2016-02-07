@@ -18,3 +18,8 @@ function ajaxTemplateForSave(url, divId, data) {
         console.log("Ajax Failed");
     });
 }
+
+function updateTopic(topicId) {
+    var data = {id: topicId};
+    ajaxTemplateForSave("/topic/update", "right-side-panel", data);
+}
