@@ -63,6 +63,10 @@ public class UserController {
         User user = (User)httpSession.getAttribute("currentUser");
         List<Topic> topicList = userService.findAllUserTopics(user);
         modelAndView.addObject("topics",topicList);
+        modelAndView.addObject("topicCount", userService.countUserTopics(user));
+        modelAndView.addObject("topicSubscribedTopic", userService.countUserSubscribedTopics(user));
+        modelAndView.addObject("topicUnSubscribedTopic", userService.countUnSubscribedTopics(user));
+        modelAndView.addObject("topicSubscribedToday", userService.countTopicsSubscribedToday(user));
         modelAndView.setViewName("user/ajaxDashboard");
         return modelAndView;
     }

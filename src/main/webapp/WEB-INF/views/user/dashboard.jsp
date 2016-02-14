@@ -11,54 +11,22 @@
         jQuery(document).ready(function () {
 
             <c:if test="${not empty newUserName}">
-                    console.log("${newUserName}");
-                    jQuery("#userName").html("${newUserName}");
+            console.log("${newUserName}");
+            jQuery("#userName").html("${newUserName}");
             </c:if>
         });
 
     </script>
 </head>
 <body>
-<div class="row" style="margin-bottom:5px;">
 
+<c:set value="${topicCount}" var="topicCount" scope="request"/>
+<c:set value="${topicSubscribedToday}" var="topicSubscribedToday" scope="request"/>
+<c:set value="${topicUnSubscribedTopic}" var="topicUnSubscribedTopic" scope="request"/>
+<c:set value="${topicSubscribedToday}" var="topicSubscribedToday" scope="request"/>
 
-    <div class="col-md-3">
-        <div class="sm-st clearfix">
-            <span class="sm-st-icon st-green"><i class="fa fa-paperclip"></i></span>
-            <div class="sm-st-info">
-                <span>${topicCount}</span>
-                Topic Created
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="sm-st clearfix">
-            <span class="sm-st-icon st-violet"><i class="fa fa-envelope-o"></i></span>
-            <div class="sm-st-info">
-                <span>${topicSubscribedTopic}</span>
-                Subscribed Topic
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="sm-st clearfix">
-            <span class="sm-st-icon st-violet"><i class="fa fa-envelope-o"></i></span>
-            <div class="sm-st-info">
-                <span>${topicUnSubscribedTopic}</span>
-                Un Subscribed Topic
-            </div>
-        </div>
-    </div>
-    <div class="col-md-3">
-        <div class="sm-st clearfix">
-            <span class="sm-st-icon st-green"><i class="fa fa-paperclip"></i></span>
-            <div class="sm-st-info">
-                <span>${topicSubscribedToday}</span>
-                Today Subscribed Topic
-            </div>
-        </div>
-    </div>
-</div>
+<jsp:include page="/WEB-INF/views/user/dashboardSummary.jsp"/>
+
 
 <div class="row">
     <div class="col-md-12">
