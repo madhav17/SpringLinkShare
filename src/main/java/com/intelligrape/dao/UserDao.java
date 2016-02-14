@@ -14,4 +14,12 @@ public interface UserDao {
     User saveEmployeeAndRole(User employee,String role);
 
     List<User> findAllUser();
+
+    Long countUserTopics(User user);
+
+    Long countSubscribedTopics(User user);
+
+    Long countUnSubscribedTopics(User user);
+
+    Long countTopicsSubscribedToday(User user);
 }

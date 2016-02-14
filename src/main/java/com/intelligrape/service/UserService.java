@@ -24,4 +24,12 @@ public interface UserService {
     User getLoggedInUser();
 
     User findByUsername(String username);
+
+    Long countUserTopics(User user);
+
+    Long countUserSubscribedTopics(User user);
+
+    Long countUnSubscribedTopics(User user);
+
+    Long countTopicsSubscribedToday(User user);
 }

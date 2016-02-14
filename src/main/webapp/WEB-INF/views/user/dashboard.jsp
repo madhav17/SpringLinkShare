@@ -19,6 +19,47 @@
     </script>
 </head>
 <body>
+<div class="row" style="margin-bottom:5px;">
+
+
+    <div class="col-md-3">
+        <div class="sm-st clearfix">
+            <span class="sm-st-icon st-green"><i class="fa fa-paperclip"></i></span>
+            <div class="sm-st-info">
+                <span>${topicCount}</span>
+                Topic Created
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="sm-st clearfix">
+            <span class="sm-st-icon st-violet"><i class="fa fa-envelope-o"></i></span>
+            <div class="sm-st-info">
+                <span>${topicSubscribedTopic}</span>
+                Subscribed Topic
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="sm-st clearfix">
+            <span class="sm-st-icon st-violet"><i class="fa fa-envelope-o"></i></span>
+            <div class="sm-st-info">
+                <span>${topicUnSubscribedTopic}</span>
+                Un Subscribed Topic
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="sm-st clearfix">
+            <span class="sm-st-icon st-green"><i class="fa fa-paperclip"></i></span>
+            <div class="sm-st-info">
+                <span>${topicSubscribedToday}</span>
+                Today's Subscribed Topic
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-md-12">
         <c:set value="${topics}" var="topicList" scope="request"/>

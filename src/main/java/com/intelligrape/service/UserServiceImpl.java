@@ -66,17 +66,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
-    public User saveUserAndRole(User employee,String role){
-        return userDao.saveEmployeeAndRole(employee,role);
+    public User saveUserAndRole(User employee, String role) {
+        return userDao.saveEmployeeAndRole(employee, role);
     }
 
-    public User findByUsername(String username){
+    public User findByUsername(String username) {
         Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
-        criteria.add(Restrictions.eq("username",username));
-        return (User)criteria.uniqueResult();
+        criteria.add(Restrictions.eq("username", username));
+        return (User) criteria.uniqueResult();
     }
 
-    public User getLoggedInUser(){
+    public User getLoggedInUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = null;
         if (!(auth instanceof AnonymousAuthenticationToken)) {
@@ -85,6 +85,22 @@ public class UserServiceImpl implements UserService {
             user = findByUsername(userDetail.getUsername());
         }
         return user;
+    }
+
+    public Long countUserTopics(User user) {
+        return userDao.countUserTopics(user);
+    }
+
+    public Long countUserSubscribedTopics(User user) {
+        return userDao.countSubscribedTopics(user);
+    }
+
+    public Long countUnSubscribedTopics(User user) {
+        return userDao.countUnSubscribedTopics(user);
+    }
+
+    public Long countTopicsSubscribedToday(User user) {
+        return userDao.countTopicsSubscribedToday(user);
     }
 
 }

@@ -50,6 +50,10 @@ public class UserController {
         httpSession.setAttribute("username", currentUser.getFullName());
         httpSession.setAttribute("profileUrl", "/user/update?id=" + currentUser.getId());
         model.addAttribute("topics", topicList);
+        model.addAttribute("topicCount", userService.countUserTopics(currentUser));
+        model.addAttribute("topicSubscribedTopic", userService.countUserSubscribedTopics(currentUser));
+        model.addAttribute("topicUnSubscribedTopic", userService.countUnSubscribedTopics(currentUser));
+        model.addAttribute("topicSubscribedToday", userService.countTopicsSubscribedToday(currentUser));
         return "user/dashboard";
     }
 
