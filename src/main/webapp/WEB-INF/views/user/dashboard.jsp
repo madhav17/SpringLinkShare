@@ -54,7 +54,7 @@
             <span class="sm-st-icon st-green"><i class="fa fa-paperclip"></i></span>
             <div class="sm-st-info">
                 <span>${topicSubscribedToday}</span>
-                Today's Subscribed Topic
+                Today Subscribed Topic
             </div>
         </div>
     </div>
