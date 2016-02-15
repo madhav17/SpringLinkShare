@@ -54,6 +54,7 @@ public class UserController {
         model.addAttribute("topicSubscribedTopic", userService.countUserSubscribedTopics(currentUser));
         model.addAttribute("topicUnSubscribedTopic", userService.countUnSubscribedTopics(currentUser));
         model.addAttribute("topicSubscribedToday", userService.countTopicsSubscribedToday(currentUser));
+        model.addAttribute("recentTopics",userService.recentTopicList(currentUser));
         return "user/dashboard";
     }
 
@@ -67,6 +68,7 @@ public class UserController {
         modelAndView.addObject("topicSubscribedTopic", userService.countUserSubscribedTopics(user));
         modelAndView.addObject("topicUnSubscribedTopic", userService.countUnSubscribedTopics(user));
         modelAndView.addObject("topicSubscribedToday", userService.countTopicsSubscribedToday(user));
+        modelAndView.addObject("recentTopics",userService.recentTopicList(user));
         modelAndView.setViewName("user/ajaxDashboard");
         return modelAndView;
     }

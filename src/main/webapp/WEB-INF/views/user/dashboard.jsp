@@ -24,14 +24,18 @@
 <c:set value="${topicSubscribedToday}" var="topicSubscribedToday" scope="request"/>
 <c:set value="${topicUnSubscribedTopic}" var="topicUnSubscribedTopic" scope="request"/>
 <c:set value="${topicSubscribedToday}" var="topicSubscribedToday" scope="request"/>
+<c:set value="${recentTopics}" var="recentTopicList" scope="request"/>
 
 <jsp:include page="/WEB-INF/views/user/dashboardSummary.jsp"/>
 
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-9">
         <c:set value="${topics}" var="topicList" scope="request"/>
         <jsp:include page="/WEB-INF/views/topic/topicList.jsp"/>
+    </div>
+    <div class="col-md-3">
+        <jsp:include page="/WEB-INF/views/topic/recentTopic.jsp"/>
     </div>
 </div>
 </body>

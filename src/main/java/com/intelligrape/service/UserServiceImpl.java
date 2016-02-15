@@ -103,4 +103,8 @@ public class UserServiceImpl implements UserService {
         return userDao.countTopicsSubscribedToday(user);
     }
 
+    public List<Topic> recentTopicList(User user) {
+        return userDao.recentTopicList(user);
+    }
+
 }

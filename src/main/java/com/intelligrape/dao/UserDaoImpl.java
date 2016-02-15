@@ -82,4 +82,15 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
         criteria.setProjection(Projections.count("id"));
         return (Long) criteria.list().get(0);
     }
+
+    public List<Topic> recentTopicList(User user){
+        Criteria criteria = sessionFactory.openSession().createCriteria(Topic.class);
+        criteria.add(Restrictions.ne("user",user));
+        criteria.add(Restrictions.between("dateCreated",Util.clearTime(new Date()),new Date()));
+        List<Topic> topicList =  criteria.list();
+        System.out.println("sdf");
+        System.out.println(topicList);
+        System.out.println("sdf");
+        return topicList;
+    }
 }

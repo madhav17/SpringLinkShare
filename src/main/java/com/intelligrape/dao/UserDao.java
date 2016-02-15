@@ -1,5 +1,6 @@
 package com.intelligrape.dao;
 
+import com.intelligrape.model.Topic;
 import com.intelligrape.model.User;
 import com.intelligrape.util.enums.Role;
 
@@ -22,4 +23,6 @@ public interface UserDao {
     Long countUnSubscribedTopics(User user);
 
     Long countTopicsSubscribedToday(User user);
+
+    List<Topic> recentTopicList(User user);
 }
