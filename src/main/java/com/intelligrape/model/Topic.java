@@ -8,6 +8,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -22,12 +24,14 @@ public class Topic {
         this.user = user;
         this.title = title;
         this.link = link;
+        this.dateCreated = new Date();
     }
 
     public Topic(TopicCO topicCO) {
         user = topicCO.user;
         title = topicCO.title;
         link = topicCO.link;
+        this.dateCreated = new Date();
     }
 
     @Id
@@ -47,9 +51,21 @@ public class Topic {
     @JoinColumn(name = "user_id", nullable = false)
     public User user;
 
+    @NotNull
+    @Column(name = "date_created",nullable = false)
+    public Date dateCreated;
+
     @OneToMany(mappedBy = "topic") // Subscription model has topic
     @Cascade(CascadeType.ALL)
     public Set<Subscription> subscriptionSet;
+
+    public Date getDateCreated() {
+        return dateCreated;
+    }
+
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
+    }
 
     public String getTitle() {
         return title;
