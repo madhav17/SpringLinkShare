@@ -46,28 +46,38 @@
         <c:if test="${not empty msg}">
             <div class="infoMsg">${msg}</div>
         </c:if>
-        <table class="table table-bordered">
-            <tr class="active">
-                <th><b>Title</b></th>
-                <th><b>Link</b></th>
-                <th><b>Action</b></th>
-            </tr>
-            <c:forEach var="topic" items="${topics}">
-                <tr class="active">
-                    <td>${topic.title}</td>
-                    <td>${topic.link}</td>
-                    <c:choose>
-                        <c:when test="${not empty subs}">
-                            <td><a href="javascript:void (0);" class="btn btn-info" name="action" data-type="${type}"
-                                   data-value="${topic.id}">${type}</a></td>
-                        </c:when>
-                        <c:otherwise>
-                            <td><a href="javascript:void (0);" class="editTopic" data-id="${topic.id}">Edit</a></td>
-                        </c:otherwise>
-                    </c:choose>
-                </tr>
-            </c:forEach>
-        </table>
+        <c:choose>
+            <c:when test="${not empty topics}">
+                <table class="table table-bordered">
+                    <tr class="active">
+                        <th><b>Title</b></th>
+                        <th><b>Link</b></th>
+                        <th><b>Action</b></th>
+                    </tr>
+
+                    <c:forEach var="topic" items="${topics}">
+                        <tr class="active">
+                            <td>${topic.title}</td>
+                            <td>${topic.link}</td>
+                            <c:choose>
+                                <c:when test="${not empty subs}">
+                                    <td><a href="javascript:void (0);" class="btn btn-info" name="action"
+                                           data-type="${type}"
+                                           data-value="${topic.id}">${type}</a></td>
+                                </c:when>
+                                <c:otherwise>
+                                    <td><a href="javascript:void (0);" class="editTopic" data-id="${topic.id}">Edit</a>
+                                    </td>
+                                </c:otherwise>
+                            </c:choose>
+                        </tr>
+                    </c:forEach>
+                </table>
+            </c:when>
+            <c:otherwise>
+                No Topic
+            </c:otherwise>
+        </c:choose>
     </div>
 
 </section>
