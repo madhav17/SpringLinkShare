@@ -76,7 +76,9 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
     public Long countTopicsSubscribedToday(User user) {
         Criteria criteria = sessionFactory.openSession().createCriteria(Subscription.class);
         criteria.add(Restrictions.eq("user", user));
+        criteria.createAlias("topic","subscriptionTopic");
         criteria.add(Restrictions.between("dateCreated", Util.clearTime(new Date()),new Date()));
+        criteria.add(Restrictions.ne("subscriptionTopic.user",user));
         criteria.setProjection(Projections.count("id"));
         return (Long) criteria.list().get(0);
     }
